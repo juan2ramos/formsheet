@@ -1376,10 +1376,13 @@ function quotationSend(response) {
 
 var submitQuotation = document.getElementById('submitQuotation');
 var quotationForm = document.getElementById('quotationForm');
-submitQuotation.addEventListener('click', function (ev) {
-    ev.preventDefault();
-    __WEBPACK_IMPORTED_MODULE_1_axios_index___default.a.post(site + '/quotation', __WEBPACK_IMPORTED_MODULE_2_form_serialize___default()(quotationForm)).then(quotationSendMail);
-});
+if (quotationForm) {
+    submitQuotation.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        __WEBPACK_IMPORTED_MODULE_1_axios_index___default.a.post(site + '/quotation', __WEBPACK_IMPORTED_MODULE_2_form_serialize___default()(quotationForm)).then(quotationSendMail);
+    });
+}
+
 function quotationSendMail(response) {
     console.log(response);
     __WEBPACK_IMPORTED_MODULE_4_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
@@ -1429,7 +1432,7 @@ var Principal = function () {
                 carText = car.options[car.selectedIndex].text,
                 init = document.getElementById('init').value,
                 end = document.getElementById('init').value;
-
+            console.log(response.data);
             var data = response.data,
                 html = '<li> <b>Origen: </b> ' + data.travel[0] + '</li>';
 

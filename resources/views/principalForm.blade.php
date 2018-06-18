@@ -71,24 +71,20 @@
 			</div>
 
 			<div class="col-10 m-t-8">
-				<input type="radio" id="i-v-m-d" class="circle tipo-viaje" name="travel" value="Ida y vuelta el mismo dia" placeholder="">
+
+				<input type="radio" id="i-v-m-d" class="circle tipo-viaje" name="travel" value="1" placeholder="">
 				<label for="i-v-m-d">Ida y vuelta el mismo día</label>
-		  </div>
 
-		 <div class="col-10 m-t-8">
-				<input type="radio" id="i-v-d-d" class="circle tipo-viaje" name="travel" value="Ida y vuelta en dias diferentes" placeholder="">
+				<input type="radio" id="i-v-d-d" class="circle tipo-viaje" name="travel" value="2" placeholder="">
 				<label for="i-v-d-d">Ida y vuelta en días diferentes</label>
-			</div>
 
-			<div class="col-10 m-t-8">
-				<input type="radio" id="i-v-s-d" class="circle tipo-viaje" name="travel" value="Ida y vuelta sin disponibilidad" placeholder="">
+				<input type="radio" id="i-v-s-d" class="circle tipo-viaje" name="travel" value="3" placeholder="">
 				<label for="i-v-s-d">Ida y vuelta sin disponibilidad</label>
-			</div>
 
-			<div class="col-10 m-t-8">
-				<input type="radio" id="i-v-c-d" class="circle tipo-viaje" name="travel" value="Ida y vuelta con disponibilidad" placeholder="">
+				<input type="radio" id="i-v-c-d" class="circle tipo-viaje" name="travel" value="4" placeholder="">
 				<label for="i-v-c-d">Ida y vuelta con disponibilidad</label>
-			</div>
+
+		  </div>
 
 		</div>
 
