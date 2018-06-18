@@ -2,6 +2,8 @@ import PrincipalForm from './FormPrincipal';
 import axios from "axios/index";
 import serialize from "form-serialize";
 import anime from 'animejs';
+import swal from 'sweetalert';
+
 
 const principal = document.getElementById('formPrincipal');
 const site = document.getElementById('body').dataset.site;
@@ -54,4 +56,6 @@ submitQuotation.addEventListener('click', function (ev) {
 });
 function quotationSendMail(response) {
     console.log(response)
+    swal("Mensaje Enviado", "Gracias por contactarnos", "success");
+    quotationForm.reset();
 }

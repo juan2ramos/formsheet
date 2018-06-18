@@ -2,12 +2,11 @@
 @section('content')
     <section class="container form-ruta-empresarial">
         <h2>Cotización Rápida</h2>
-        <div class="row align-center descrip-service">
-            <div class="col-6 icon-service">
+        <div class="row align-center justify-around descrip-service">
+            <div class="col-16 col-m-4 col-l-4 icon-service">
                 <img src="{{asset('images/iconoRutaEmpresarial.png')}}" alt="">
-
             </div>
-            <div class="col-10">
+            <div class="col-16 col-m-10 col-l-10">
                 <h3>Ruta Empresarial</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur mattis,
                     leo orci luctus diam, sed auctor </p>
@@ -64,7 +63,7 @@
                     <p><span>3</span> Selecciona el tipo de vehículo </p>
                 </div>
                 <div class="col-6">
-                    <select id="car">
+                    <select id="car" name="car">
                         <option value="">Selecciona el tipo de vehículo</option>
                         <option value="1">Camioneta/Minivan</option>
                         <option value="2">Microbus 11</option>
@@ -102,11 +101,11 @@
                     </div>
                     <div class="row col-8 hours justify-evenly">
                         <p>Hora de ingreso:</p>
-                        <input type="time" name="" value="">
+                        <input type="time" name="hourInit" value="">
                     </div>
                     <div class="row col-8 hours justify-evenly">
                         <p>Hora de salida:</p>
-                        <input type="time" name="" value="">
+                        <input type="time" name="hourEnd" value="">
                     </div>
                 </div>
                 <div class="row justify-evenly item">
@@ -119,7 +118,7 @@
                     </div>
                     <div class="col-6">
                         <label for="fin">Duración del contrato</label>
-                        <input type="text" id="duracionContrato" name="" value="" placeholder="">
+                        <input type="text" id="duracionContrato" name="contractTime" value="" placeholder="">
                     </div>
                 </div>
                 <div class="row justify-evenly item">
@@ -129,16 +128,16 @@
                     <div class="col-6">
                         <p>¿Ya cuenta con el servicio de transporte?</p>
 
-                        <input type="radio" id="yes" class="circle" name="question1" value="SI" placeholder="">
+                        <input type="radio" id="yes" class="circle" name="haveService" value="SI" placeholder="">
                         <label for="yes">SI</label>
-                        <input type="radio" id="no" class="circle" name="question1" value="NO" placeholder="">
+                        <input type="radio" id="no" class="circle" name="haveService" value="NO" placeholder="">
                         <label for="no">NO</label>
 
                         <p>¿Desea agendar una reunión informativa con Estárter?</p>
 
-                        <input type="radio" id="yes2" class="circle" name="question2" value="SI" placeholder="">
+                        <input type="radio" id="yes2" class="circle" name="dateMeeting" value="SI" placeholder="">
                         <label for="yes2">SI</label>
-                        <input type="radio" id="no2" class="circle" name="question2" value="NO" placeholder="">
+                        <input type="radio" id="no2" class="circle" name="dateMeeting" value="NO" placeholder="">
                         <label for="no2">NO</label>
 
                     </div>
@@ -152,12 +151,12 @@
                         <p><span>7</span>Datos personales.</p>
                     </div>
                     <div class="col-6 datos-personales">
-                        <input type="text" name="" value="" placeholder="Nombre y Apellidos">
-                        <input type="text" name="" value="" placeholder="Télefono o celular">
+                        <input type="text" name="name" value="" placeholder="Nombre y Apellidos">
+                        <input type="text" name="phone" value="" placeholder="Télefono o celular">
                     </div>
                     <div class="col-6 datos-personales">
-                        <input type="text" name="" value="" placeholder="Correo electronico">
-                        <input id="politicas" type="checkbox" name="" value="">
+                        <input type="text" name="email" value="" placeholder="Correo electronico">
+                        <input id="politicas" type="checkbox" name="policies" value="Aceptó">
                         <label for="politicas">Acepto el tratamiento de datos personales y las politicas de
                             privacidad.</label>
                     </div>
@@ -167,6 +166,7 @@
                 </div>
 
             </div>
+						
         </form>
     </section>
 @endsection
