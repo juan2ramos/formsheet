@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <section class="container form-ruta-empresarial">
-	<h2>Cotización Rápida</h2>
+	<h2 class="titleForm">Cotización Rápida</h2>
 	<div class="row align-center descrip-service">
 			<div class="col-6 icon-service">
 					<img src="{{asset('images/iconoRutaEmpresarial.png')}}" alt="">
@@ -37,7 +37,7 @@
 					<input id="cityMede" class="rectangle" type="radio" name="origin" value="Medellín">
 					<label for="cityMede">Medellín</label>
 				</div>
-				
+
 			</div>
 			<div class="row justify-center item">
 				<div class="col-16 numberItem">

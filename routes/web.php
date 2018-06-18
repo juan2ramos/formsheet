@@ -14,7 +14,7 @@
 
 
 Route::get( '/', function () {
-	return view( 'welcome' );
+	return view( 'home' );
 } );
 Route::get( 'principal', 'PrincipalController@index' );
 Route::post( 'principal', 'PrincipalController@calculate' )->name('calculate');
