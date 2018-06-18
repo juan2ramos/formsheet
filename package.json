@@ -20,8 +20,9 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "animejs": "^2.2.0",
+        "form-serialize": "^0.7.2",
         "inuit-css": "^2.0.5",
-        "numeral": "^2.0.6",
-        "form-serialize": "^0.7.2"
+        "numeral": "^2.0.6"
     }
 }
