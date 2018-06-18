@@ -34,14 +34,14 @@
 		</div>
 		<div>
 			<h2>4. Selecciona la fecha de tu viaje</h2>
-			<label for="inicio">inicio</label>
-			<input type="date" id="inicio" name="init" value="{{old('init')}}" placeholder="Inicio">
+			<label for="inicio" >inicio</label>
+			<input type="date" id="init" name="init" value="{{old('init')}}" placeholder="Inicio">
 			<label for="fin">fin</label>
-			<input type="date" id="fin" name="end" value="{{old('end')}}" placeholder="Final">
+			<input type="date" id="end" name="end" value="{{old('end')}}" placeholder="Final">
 		</div>
 		<div>
 			<h2>5. Tipo de vehículo</h2>
-			<select name="car" id="">
+			<select name="car" id="car">
 				<option value="">Selecciona tipo de vehículo</option>
 				<option value="9">Camioneta/Minivan</option>
 				<option value="10">Doble cabina</option>
@@ -57,17 +57,7 @@
 			<button type="submit">Calcular</button>
 		</div>
 	</form>
+	<div id="price"></div>
 	<ul id="infoTravel"></ul>
 
-	@if(!empty($travelValue))
-		{{$travelValue}}
-		<ul>
-			<li>Origen: {{$travel[0]}}</li>
-			<li>	Destino: {{$travel[1]}}</li>
-			<li>Distancia total: {{$travel[2]}}KM</li>
-			<li>	Tiempo total: {{$travel[4]}}Horas</li>
-			<li>	Desde el {{$input['init']}}</li>
-			<li>	Hasta el {{$input['end']}}</li>
-		</ul>
-	@endif
 @endsection
