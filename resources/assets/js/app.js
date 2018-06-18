@@ -1,3 +1,4 @@
+import numeral from "numeral";
 import PrincipalForm from './FormPrincipal';
 
 const principal = document.getElementById('formPrincipal');
