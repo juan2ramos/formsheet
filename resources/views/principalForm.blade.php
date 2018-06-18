@@ -60,3 +60,4 @@
 	<div id="price"></div>
 	<ul id="infoTravel"></ul>
 @endsection
+
