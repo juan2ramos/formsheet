@@ -3167,8 +3167,16 @@ h1 {
   color: #fff;
 }
 
-.form-ruta-empresarial h2:first-child {
+h2 {
   text-align: center;
+}
+
+.botones-home {
+  min-height: 130px;
+  background: #f7f7f7;
+  border: 1px solid #dcdcdc;
+  padding-right: 20px;
+  text-align: justify;
 }
 
 .descrip-service {
@@ -3177,7 +3185,7 @@ h1 {
   padding: 5px 15px;
 }
 
-.descrip-service hr {
+hr.line {
   display: inline-block;
   vertical-align: middle;
   width: 1px;

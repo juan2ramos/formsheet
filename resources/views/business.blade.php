@@ -1,11 +1,11 @@
 @extends('layout')
 @section('content')
 <section class="container form-ruta-empresarial">
-	<h2 class="titleForm">Cotización Rápida</h2>
+	<h2>Cotización Rápida</h2>
 	<div class="row align-center descrip-service">
 			<div class="col-6 icon-service">
 					<img src="{{asset('images/iconoRutaEmpresarial.png')}}" alt="">
-					<hr>
+					<hr class="line">
 			</div>
 			<div class="col-10">
 					<h3>Ruta Empresarial</h3>

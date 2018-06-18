@@ -19,4 +19,4 @@ Route::get( '/', function () {
 Route::get( 'principal', 'PrincipalController@index' );
 Route::post( 'principal', 'PrincipalController@calculate' )->name('calculate');
 
-Route::get( 'ruta-empresarial', 'BusinessController@index' );
+Route::get( 'ruta-empresarial', 'BusinessController@index' )->name('business');
