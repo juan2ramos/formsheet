@@ -42,14 +42,16 @@ function quotationSend(response) {
         easing: 'easeInOutCubic',
         update: () => window.scroll(0, scrollCoords.y)
     });
-    const submitQuotation = document.getElementById('submitQuotation');
-    const quotationForm = document.getElementById('quotationForm');
-    submitQuotation.addEventListener('click', function (ev) {
-        ev.preventDefault();
-        axios.post(site + '/quotation', serialize(quotationForm))
-            .then(quotationSendMail);
-    })
+
 }
+
+const submitQuotation = document.getElementById('submitQuotation');
+const quotationForm = document.getElementById('quotationForm');
+submitQuotation.addEventListener('click', function (ev) {
+    ev.preventDefault();
+    axios.post(site + '/quotation', serialize(quotationForm))
+        .then(quotationSendMail);
+});
 function quotationSendMail(response) {
     console.log(response)
 }
