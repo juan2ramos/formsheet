@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class PrincipalController{
 	use FormTrait;
-	private $id;
 	private $sheet;
 
 	public function __construct() {
-		$this->id    = '1W9gsEMTpzox67Sge1AzUE43BMSKvllp24Ax6fjVu58c';
 		$this->sheet = 'Tarifas';
+
 	}
 
 	function index() {
@@ -36,7 +35,7 @@ class PrincipalController{
 	}
 
 	private function getTravel( $dataPost ) {
-		return $this->sheet( $this->id, $this->sheet )->where( '0', $dataPost['origin'] )->where( '1', $dataPost['destiny'] )->first();
+		return $this->sheet( $this->sheet )->where( '0', $dataPost['origin'] )->where( '1', $dataPost['destiny'] )->first();
 	}
 
 	private function getCalculate( $dataPost, $travel ) {
@@ -63,14 +62,14 @@ class PrincipalController{
 		$init = new Carbon( $dataPost['init'] );
 		$end  = new Carbon( $dataPost['end'] );
 		$days = $init->diffInDays( $end );
-		$base = $this->sheet( $this->id, $base )->first();
+		$base = $this->sheet($base )->first();
 		return $this->formatValue( $travel[$dataPost['car']]) + ( intval($days) * $this->formatValue( $base[0] ));
 	}
 
 
 	private function getCities() {
 
-		return $this->sheet( $this->id, 'Tarifas!B2:B2000' );
+		return $this->sheet('Tarifas!B2:B2000' );
 	}
 
 	private function formatValue( $value ) {

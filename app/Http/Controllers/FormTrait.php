@@ -7,8 +7,9 @@ use Google_Service_Sheets;
 use Revolution\Google\Sheets\Sheets;
 
 trait FormTrait{
-	function sheet( $id, $sheet ) {
 
+	function sheet( $sheet ) {
+        $id    = '1W9gsEMTpzox67Sge1AzUE43BMSKvllp24Ax6fjVu58c';
 		$client = new Google_Client();
 		$client->setApplicationName( 'Google Sheets ' );
 		$client->setScopes( Google_Service_Sheets::SPREADSHEETS_READONLY );
