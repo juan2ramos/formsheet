@@ -73,18 +73,24 @@
 			<div class="col-10 m-t-8">
 
 				<input type="radio" id="i-v-m-d" class="circle tipo-viaje" name="travel" value="1" placeholder="">
-				<label for="i-v-m-d">Ida y vuelta el mismo día</label>
+				<label for="i-v-m-d">Ida y vuelta el mismo día <span><img src="{{asset('images/iconincog.png')}}" alt=""></span>	 </label>
 
 				<input type="radio" id="i-v-d-d" class="circle tipo-viaje" name="travel" value="2" placeholder="">
-				<label for="i-v-d-d">Ida y vuelta en días diferentes</label>
+				<label for="i-v-d-d">Ida y vuelta en días diferentes <span><img src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
 
 				<input type="radio" id="i-v-s-d" class="circle tipo-viaje" name="travel" value="3" placeholder="">
-				<label for="i-v-s-d">Ida y vuelta sin disponibilidad</label>
+				<label for="i-v-s-d">Ida y vuelta sin disponibilidad <span><img src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
 
 				<input type="radio" id="i-v-c-d" class="circle tipo-viaje" name="travel" value="4" placeholder="">
-				<label for="i-v-c-d">Ida y vuelta con disponibilidad</label>
+				<label for="i-v-c-d">Ida y vuelta con disponibilidad <span><img src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
 
 		  </div>
+
+			<div class="col-6 m-t-8">
+				<div class="infoBox">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur mattis, </p>
+				</div>
+			</div>
 
 		</div>
 
@@ -177,11 +183,15 @@
 				  <p>Valor estimado</p>
 					<input type="text" name="" value=" $ 2.650.000" id="valorEstimado">
 			</div>
-			<div class="col-16 col-m-8 col-l-8 img-car">
+			<div class="col-16 col-m-8 col-l-8">
+				<div class="">
 					<ul id="infoTravel"></ul>
+				</div>
 			</div>
 			<div class="col-16 col-m-1 col-l-8">
-				<ul id="infoTravel"></ul>
+				<div class="">
+					<ul id="infoTravel"></ul>
+				</div>
 			</div>
 			<div class="col-16">
 				  <p>Valor Km adicional: $1000 Valor hora adicional: $ 30.000 Valor día adicional: $300.000</p>
