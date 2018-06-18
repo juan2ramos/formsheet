@@ -759,15 +759,12 @@ module.exports = __webpack_require__(32);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_numeral__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_numeral___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_numeral__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormPrincipal__ = __webpack_require__(10);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormPrincipal__ = __webpack_require__(10);
 
 
 var principal = document.getElementById('formPrincipal');
 if (principal) {
-  new __WEBPACK_IMPORTED_MODULE_1__FormPrincipal__["a" /* default */](principal);
+  new __WEBPACK_IMPORTED_MODULE_0__FormPrincipal__["a" /* default */](principal);
 }
 
 /***/ }),
@@ -1802,9 +1799,12 @@ return numeral;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_form_serialize__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_form_serialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_form_serialize__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_numeral__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_numeral___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_numeral__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 
 
@@ -1829,17 +1829,18 @@ var Principal = function () {
     }], [{
         key: 'setInfoForm',
         value: function setInfoForm(response) {
-            var car = document.getElementById('car').text,
+            var car = document.getElementById('car'),
+                carText = car.options[car.selectedIndex].text,
                 init = document.getElementById('init').value,
                 end = document.getElementById('init').value;
 
             var data = response.data,
                 html = '<li> <b>Origen: </b> ' + data.travel[0] + '</li>';
 
-            document.getElementById('price').innerHTML = data.travelValue;
+            document.getElementById('price').innerHTML = __WEBPACK_IMPORTED_MODULE_2_numeral___default()(data.travelValue).format('$0,0[.]00');
 
             html += '<li> <b>Destino:  </b> ' + data.travel[1] + '</li>';
-            html += '<li> <b>Tipo de vehiculo: </b> ' + car + '</li>';
+            html += '<li> <b>Tipo de vehiculo: </b> ' + carText + '</li>';
             html += '<li> <b>Distancia total: </b> ' + data.travel[3] + '</li>';
             html += '<li> <b>Desde el: </b> ' + init + '</li>';
             html += '<li> <b>Hasta el: </b> ' + end + '</li>';

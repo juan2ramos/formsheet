@@ -1,5 +1,6 @@
 import axios from 'axios';
 import serialize from 'form-serialize';
+import numeral from "numeral";
 
 const site = document.getElementById('body').dataset.site,
     infoTravel = document.getElementById('infoTravel');
@@ -17,17 +18,18 @@ export default class Principal {
     }
 
     static setInfoForm(response) {
-        const car = document.getElementById('car').text,
+        const car = document.getElementById('car'),
+            carText = car.options[car.selectedIndex].text,
             init = document.getElementById('init').value,
             end = document.getElementById('init').value;
 
         let data = response.data,
             html = `<li> <b>Origen: </b> ${data.travel[0]}</li>`;
 
-        document.getElementById('price').innerHTML = data.travelValue;
+        document.getElementById('price').innerHTML = numeral(data.travelValue).format('$0,0[.]00');
 
         html += `<li> <b>Destino:  </b> ${data.travel[1]}</li>`;
-        html += `<li> <b>Tipo de vehiculo: </b> ${car}</li>`;
+        html += `<li> <b>Tipo de vehiculo: </b> ${carText}</li>`;
         html += `<li> <b>Distancia total: </b> ${data.travel[3]}</li>`;
         html += `<li> <b>Desde el: </b> ${init}</li>`;
         html += `<li> <b>Hasta el: </b> ${end}</li>`;
