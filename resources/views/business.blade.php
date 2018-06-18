@@ -5,7 +5,7 @@
         <div class="row align-center descrip-service">
             <div class="col-6 icon-service">
                 <img src="{{asset('images/iconoRutaEmpresarial.png')}}" alt="">
-                <hr class="line">
+
             </div>
             <div class="col-10">
                 <h3>Ruta Empresarial</h3>
@@ -85,7 +85,8 @@
                     <p class="is-text-center m-b-0">Valor Estimado</p>
                 </div>
                 <div class="col-8">
-                    <input disabled type="text" name="price" value=" $0" id="price">
+                    <input disabled type="text" value=" $0" id="priceDisabled">
+										<input type="hidden" name="price" value=" $0" id="price">
                 </div>
                 <div class="col-16 span">
                     <span>*Precio mes basado en ruta de ida y vuelta sin peajes, máximo 50 km diarios.</span>

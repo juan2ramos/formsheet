@@ -9,11 +9,13 @@ if (principal) {
     new PrincipalForm(principal);
 }
 
+
 const quotation = document.getElementById('quotation');
 
 if (quotation) {
     quotation.addEventListener('click', function (ev) {
         ev.preventDefault();
+        this.setAttribute('disabled',true);
         let data = {
             origin: document.querySelector('input[name=origin]:checked').value,
             days: document.querySelector('input[name=days]:checked').value,
@@ -26,7 +28,9 @@ if (quotation) {
 }
 
 function quotationSend(response) {
+    quotation.removeAttribute('disabled');
     document.querySelector('#price').value = response.data;
+    document.querySelector('#priceDisabled').value = response.data;
     document.querySelector('#UserData').classList.remove('is-hidden');
     const scrollCoords = {
         y: window.pageYOffset
