@@ -15,7 +15,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
 
 </head>
-<body>
+<body data-site="{{env('APP_URL')}}" id="body">
 @yield('content')
 <script src="{{mix('js/app.js')}}"></script>
 </body>
