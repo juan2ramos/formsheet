@@ -15,8 +15,8 @@
 	<link rel="stylesheet"
 		  href="https://fonts.googleapis.com/css?family=Roboto:300,300i,500,500i,700,700i,900,900i|Boogaloo">
 </head>
-<body>
+<body data-site="{{env('APP_URL')}}" id="body">
 @yield('content')
-<script src=""></script>
+<script src="{{mix('js/app.js')}}"></script>
 </body>
 </html>

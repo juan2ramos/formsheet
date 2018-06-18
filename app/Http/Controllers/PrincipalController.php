@@ -11,7 +11,7 @@ class PrincipalController{
 	private $sheet;
 
 	public function __construct() {
-		$this->id    = '1BlRXdx78pBTOQLfFNqzOUY3hEyHe27WKLJOGkKTJj2U';
+		$this->id    = '1W9gsEMTpzox67Sge1AzUE43BMSKvllp24Ax6fjVu58c';
 		$this->sheet = 'Tarifas';
 	}
 
@@ -22,6 +22,7 @@ class PrincipalController{
 	}
 
 	function calculate( Request $request ) {
+
 		$request->validate([
 			'origin' => 'required',
 			'destiny' => 'required',
@@ -31,8 +32,7 @@ class PrincipalController{
 		$input = $request->all();
 		$travel      = $this->getTravel( $input);
 		$travelValue = $this->getCalculate( $input, $travel );
-		$cities      = $this->getCities();
-		return view( 'principalForm', compact( 'cities', 'travelValue', 'travel','input' ) );
+		return ['travelValue' => $travelValue, 'travel' => $travel];
 	}
 
 	private function getTravel( $dataPost ) {

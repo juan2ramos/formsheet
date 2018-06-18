@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-	<form action="{{route('calculate')}}" method="post">
+	<form id="formPrincipal" action="{{route('calculate')}}" method="post">
 		{{ csrf_field() }}
 		<div>
 			<h2>1. Selecciona tu ciudad de origen</h2>
@@ -57,7 +57,7 @@
 			<button type="submit">Calcular</button>
 		</div>
 	</form>
-
+	<ul id="infoTravel"></ul>
 
 	@if(!empty($travelValue))
 		{{$travelValue}}
