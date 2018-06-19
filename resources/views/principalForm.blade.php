@@ -88,7 +88,7 @@
 
 			<div class="col-6 m-t-8">
 				<div class="infoBox">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur mattis, </p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur mattis,mike </p>
 				</div>
 			</div>
 

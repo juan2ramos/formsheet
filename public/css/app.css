@@ -3374,8 +3374,8 @@ textarea {
   top: 0;
   left: 0;
   border-radius: 50%;
-  background: #fff;
-  border: 1px solid #becad6;
+  background: #f7f7f7;
+  border: 1px solid #d3d3d3;
 }
 
 [type=radio].circle + label:after {
@@ -3386,7 +3386,7 @@ textarea {
   top: .6rem;
   left: .6rem;
   border-radius: 50%;
-  background: #fff;
+  background: #f7f7f7;
 }
 
 [type=radio].circle:checked + label:before {
@@ -3451,5 +3451,26 @@ textarea {
   background: #f7f7f7;
   color: #abaaaa;
   padding: 15px 20px;
+}
+
+.infoBoxTransfer p {
+  font-size: 13px;
+}
+
+.infoBoxTransfer span {
+  font-size: 25px;
+  font-weight: bold;
+  color: #3e3e3e;
+}
+
+table {
+  background: #fcfcfc;
+  border: 1px solid #d3d3d3;
+  line-height: 5px;
+}
+
+thead {
+  border: none;
+  font-weight: bold;
 }
 

@@ -25,7 +25,7 @@
       </div>
     </div>
   </a>
-  <a class="botones-home is-full-width m-t-28" href="">
+  <a class="botones-home is-full-width m-t-28" href="{{route('transfer')}}">
     <div class="row align-center justify-around">
       <div class="col-16 col-m-4 col-l-4 icon-service">
           <img src="{{asset('images/iconTraslado.png')}}" alt="">
@@ -36,7 +36,7 @@
       </div>
     </div>
   </a>
-  <a class="botones-home is-full-width m-t-28" href="">
+  <a class="botones-home is-full-width m-t-28" href="{{route('transportDoor')}}">
     <div class="row align-center justify-around">
       <div class="col-16 col-m-4 col-l-4 icon-service">
           <img src="{{asset('images/iconoPuertaPuerta.png')}}" alt="">
