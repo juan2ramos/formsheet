@@ -1319,74 +1319,17 @@ module.exports = __webpack_require__(37);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormPrincipal__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_index__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios_index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_form_serialize__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_form_serialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_form_serialize__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_animejs__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_animejs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_sweetalert__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_sweetalert__);
-
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormBusiness__ = __webpack_require__(43);
 
 
 
 var principal = document.getElementById('formPrincipal');
-var site = document.getElementById('body').dataset.site;
 if (principal) {
-    new __WEBPACK_IMPORTED_MODULE_0__FormPrincipal__["a" /* default */](principal);
+  new __WEBPACK_IMPORTED_MODULE_0__FormPrincipal__["a" /* default */](principal);
 }
-
 var quotation = document.getElementById('quotation');
-
 if (quotation) {
-    quotation.addEventListener('click', function (ev) {
-        ev.preventDefault();
-        this.setAttribute('disabled', true);
-        var data = {
-            origin: document.querySelector('input[name=origin]:checked').value,
-            days: document.querySelector('input[name=days]:checked').value,
-            car: document.querySelector('#car').value,
-            _token: document.querySelector('input[name=_token]').value
-        };
-        __WEBPACK_IMPORTED_MODULE_1_axios_index___default.a.post(site + '/ruta-empresarial', data).then(quotationSend);
-    });
-}
-
-function quotationSend(response) {
-    quotation.removeAttribute('disabled');
-    document.querySelector('#price').value = response.data;
-    document.querySelector('#priceDisabled').value = response.data;
-    document.querySelector('#UserData').classList.remove('is-hidden');
-    var scrollCoords = {
-        y: window.pageYOffset
-    };
-    __WEBPACK_IMPORTED_MODULE_3_animejs___default()({
-        targets: scrollCoords,
-        y: 800,
-        duration: 350,
-        easing: 'easeInOutCubic',
-        update: function update() {
-            return window.scroll(0, scrollCoords.y);
-        }
-    });
-}
-
-var submitQuotation = document.getElementById('submitQuotation');
-var quotationForm = document.getElementById('quotationForm');
-if (quotationForm) {
-    submitQuotation.addEventListener('click', function (ev) {
-        ev.preventDefault();
-        __WEBPACK_IMPORTED_MODULE_1_axios_index___default.a.post(site + '/quotation', __WEBPACK_IMPORTED_MODULE_2_form_serialize___default()(quotationForm)).then(quotationSendMail);
-    });
-}
-
-function quotationSendMail(response) {
-    console.log(response);
-    __WEBPACK_IMPORTED_MODULE_4_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
-    quotationForm.reset();
+  new __WEBPACK_IMPORTED_MODULE_1__FormBusiness__["a" /* default */](quotation);
 }
 
 /***/ }),
@@ -1400,6 +1343,12 @@ function quotationSendMail(response) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_form_serialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_form_serialize__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_numeral__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_numeral___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_numeral__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_animejs__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_animejs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AutoComplete__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AutoComplete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__AutoComplete__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sweetalert__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_sweetalert__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1408,47 +1357,102 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
+
+
+
 var site = document.getElementById('body').dataset.site,
-    infoTravel = document.getElementById('infoTravel');
+    infoTravel = document.getElementById('infoTravel'),
+    inputAuto = document.querySelector('#destiny'),
+    submitPrincipal = document.querySelector('#submitPrincipal'),
+    scrollCoords = {
+  y: window.pageYOffset
+};
 
 var Principal = function () {
-    function Principal(principal) {
-        _classCallCheck(this, Principal);
+  function Principal(principal) {
+    _classCallCheck(this, Principal);
 
-        this.principal = principal;
-        principal.addEventListener('submit', this.getInfoFormPrincipal.bind(this));
+    this.principal = principal;
+    principal.addEventListener('submit', this.getInfoFormPrincipal.bind(this));
+    this.autoCompleteInput();
+    inputAuto.addEventListener('click', this.resetInputComplete());
+    submitPrincipal.addEventListener('click', this.submit.bind(this));
+  }
+
+  _createClass(Principal, [{
+    key: 'submit',
+    value: function submit(ev) {
+      ev.preventDefault();
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principalMail', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.principalSendMail.bind(this));
     }
-
-    _createClass(Principal, [{
-        key: 'getInfoFormPrincipal',
-        value: function getInfoFormPrincipal(ev) {
-            ev.preventDefault();
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principal', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.setInfoForm);
+  }, {
+    key: 'resetInputComplete',
+    value: function resetInputComplete() {
+      this.value = "";
+    }
+  }, {
+    key: 'autoCompleteInput',
+    value: function autoCompleteInput() {
+      new __WEBPACK_IMPORTED_MODULE_4__AutoComplete___default.a({
+        selector: '#destiny', minChars: 2,
+        source: function source(term, suggest) {
+          term = term.toLowerCase();
+          var choices = inputAuto.dataset.cities.split(', ');
+          var matches = [];
+          for (var i = 0; i < choices.length; i++) {
+            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+          }suggest(matches);
         }
-    }], [{
-        key: 'setInfoForm',
-        value: function setInfoForm(response) {
-            var car = document.getElementById('car'),
-                carText = car.options[car.selectedIndex].text,
-                init = document.getElementById('init').value,
-                end = document.getElementById('init').value;
-            console.log(response.data);
-            var data = response.data,
-                html = '<li> <b>Origen: </b> ' + data.travel[0] + '</li>';
-
-            document.getElementById('price').innerHTML = __WEBPACK_IMPORTED_MODULE_2_numeral___default()(data.travelValue).format('$0,0[.]00');
-
-            html += '<li> <b>Destino:  </b> ' + data.travel[1] + '</li>';
-            html += '<li> <b>Tipo de vehiculo: </b> ' + carText + '</li>';
-            html += '<li> <b>Distancia total: </b> ' + data.travel[3] + '</li>';
-            html += '<li> <b>Desde el: </b> ' + init + '</li>';
-            html += '<li> <b>Hasta el: </b> ' + end + '</li>';
-
-            infoTravel.innerHTML = html;
+      });
+    }
+  }, {
+    key: 'getInfoFormPrincipal',
+    value: function getInfoFormPrincipal(ev) {
+      ev.preventDefault();
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principal', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.setInfoForm);
+    }
+  }], [{
+    key: 'principalSendMail',
+    value: function principalSendMail(response) {
+      console.log(response.data);
+      __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
+      this.principal.reset();
+    }
+  }, {
+    key: 'setInfoForm',
+    value: function setInfoForm(response) {
+      var car = document.getElementById('car'),
+          carText = car.options[car.selectedIndex].text,
+          init = document.getElementById('init').value,
+          end = document.getElementById('init').value;
+      document.querySelector('#UserData').classList.remove('is-hidden');
+      __WEBPACK_IMPORTED_MODULE_3_animejs___default()({
+        targets: scrollCoords,
+        y: 1350,
+        duration: 700,
+        easing: 'easeInOutCubic',
+        update: function update() {
+          return window.scroll(0, scrollCoords.y);
         }
-    }]);
+      });
 
-    return Principal;
+      var data = response.data,
+          html = '<li> <b>Origen: </b> ' + data.travel[0] + '</li>';
+
+      document.getElementById('price').value = data.travelValue;
+      document.getElementById('priceDisabled').value = data.travelValue;
+
+      html += '<li> <b>Destino:  </b> ' + data.travel[1] + '</li>';
+      html += '<li> <b>Tipo de vehiculo: </b> ' + carText + '</li>';
+      html += '<li> <b>Distancia total: </b> ' + data.travel[3] + '</li>';
+      html += '<li> <b>Desde el: </b> ' + init + '</li>';
+      html += '<li> <b>Hasta el: </b> ' + end + '</li>';
+
+      infoTravel.innerHTML = html;
+    }
+  }]);
+
+  return Principal;
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Principal);
@@ -3605,6 +3609,348 @@ function(a){a=P(a);for(var c=v.length;c--;)for(var d=v[c],b=d.animations,f=b.len
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/*
+    JavaScript autoComplete v1.0.4
+    Copyright (c) 2014 Simon Steinberger / Pixabay
+    GitHub: https://github.com/Pixabay/JavaScript-autoComplete
+    License: http://www.opensource.org/licenses/mit-license.php
+*/
+
+var autoComplete = function () {
+    // "use strict";
+    function autoComplete(options) {
+        if (!document.querySelector) return;
+
+        // helpers
+        function hasClass(el, className) {
+            return el.classList ? el.classList.contains(className) : new RegExp('\\b' + className + '\\b').test(el.className);
+        }
+
+        function addEvent(el, type, handler) {
+            if (el.attachEvent) el.attachEvent('on' + type, handler);else el.addEventListener(type, handler);
+        }
+        function removeEvent(el, type, handler) {
+            // if (el.removeEventListener) not working in IE11
+            if (el.detachEvent) el.detachEvent('on' + type, handler);else el.removeEventListener(type, handler);
+        }
+        function live(elClass, event, cb, context) {
+            addEvent(context || document, event, function (e) {
+                var found,
+                    el = e.target || e.srcElement;
+                while (el && !(found = hasClass(el, elClass))) {
+                    el = el.parentElement;
+                }if (found) cb.call(el, e);
+            });
+        }
+
+        var o = {
+            selector: 0,
+            source: 0,
+            minChars: 3,
+            delay: 150,
+            offsetLeft: 0,
+            offsetTop: 1,
+            cache: 1,
+            menuClass: '',
+            renderItem: function renderItem(item, search) {
+                // escape special characters
+                search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+                return '<div class="autocomplete-suggestion" data-val="' + item + '">' + item.replace(re, "<b>$1</b>") + '</div>';
+            },
+            onSelect: function onSelect(e, term, item) {}
+        };
+        for (var k in options) {
+            if (options.hasOwnProperty(k)) o[k] = options[k];
+        }
+
+        // init
+        var elems = _typeof(o.selector) == 'object' ? [o.selector] : document.querySelectorAll(o.selector);
+        for (var i = 0; i < elems.length; i++) {
+            var that = elems[i];
+
+            // create suggestions container "sc"
+            that.sc = document.createElement('div');
+            that.sc.className = 'autocomplete-suggestions ' + o.menuClass;
+
+            that.autocompleteAttr = that.getAttribute('autocomplete');
+            that.setAttribute('autocomplete', 'off');
+            that.cache = {};
+            that.last_val = '';
+
+            that.updateSC = function (resize, next) {
+                var rect = that.getBoundingClientRect();
+                that.sc.style.left = Math.round(rect.left + (window.pageXOffset || document.documentElement.scrollLeft) + o.offsetLeft) + 'px';
+                that.sc.style.top = Math.round(rect.bottom + (window.pageYOffset || document.documentElement.scrollTop) + o.offsetTop) + 'px';
+                that.sc.style.width = Math.round(rect.right - rect.left) + 'px'; // outerWidth
+                if (!resize) {
+                    that.sc.style.display = 'block';
+                    if (!that.sc.maxHeight) {
+                        that.sc.maxHeight = parseInt((window.getComputedStyle ? getComputedStyle(that.sc, null) : that.sc.currentStyle).maxHeight);
+                    }
+                    if (!that.sc.suggestionHeight) that.sc.suggestionHeight = that.sc.querySelector('.autocomplete-suggestion').offsetHeight;
+                    if (that.sc.suggestionHeight) if (!next) that.sc.scrollTop = 0;else {
+                        var scrTop = that.sc.scrollTop,
+                            selTop = next.getBoundingClientRect().top - that.sc.getBoundingClientRect().top;
+                        if (selTop + that.sc.suggestionHeight - that.sc.maxHeight > 0) that.sc.scrollTop = selTop + that.sc.suggestionHeight + scrTop - that.sc.maxHeight;else if (selTop < 0) that.sc.scrollTop = selTop + scrTop;
+                    }
+                }
+            };
+            addEvent(window, 'resize', that.updateSC);
+            document.body.appendChild(that.sc);
+
+            live('autocomplete-suggestion', 'mouseleave', function (e) {
+                var sel = that.sc.querySelector('.autocomplete-suggestion.selected');
+                if (sel) setTimeout(function () {
+                    sel.className = sel.className.replace('selected', '');
+                }, 20);
+            }, that.sc);
+
+            live('autocomplete-suggestion', 'mouseover', function (e) {
+                var sel = that.sc.querySelector('.autocomplete-suggestion.selected');
+                if (sel) sel.className = sel.className.replace('selected', '');
+                this.className += ' selected';
+            }, that.sc);
+
+            live('autocomplete-suggestion', 'mousedown', function (e) {
+                if (hasClass(this, 'autocomplete-suggestion')) {
+                    // else outside click
+                    var v = this.getAttribute('data-val');
+                    that.value = v;
+                    o.onSelect(e, v, this);
+                    that.sc.style.display = 'none';
+                }
+            }, that.sc);
+
+            that.blurHandler = function () {
+                try {
+                    var over_sb = document.querySelector('.autocomplete-suggestions:hover');
+                } catch (e) {
+                    var over_sb = 0;
+                }
+                if (!over_sb) {
+                    that.last_val = that.value;
+                    that.sc.style.display = 'none';
+                    setTimeout(function () {
+                        that.sc.style.display = 'none';
+                    }, 350); // hide suggestions on fast input
+                } else if (that !== document.activeElement) setTimeout(function () {
+                    that.focus();
+                }, 20);
+            };
+            addEvent(that, 'blur', that.blurHandler);
+
+            var suggest = function suggest(data) {
+                var val = that.value;
+                that.cache[val] = data;
+                if (data.length && val.length >= o.minChars) {
+                    var s = '';
+                    for (var i = 0; i < data.length; i++) {
+                        s += o.renderItem(data[i], val);
+                    }that.sc.innerHTML = s;
+                    that.updateSC(0);
+                } else that.sc.style.display = 'none';
+            };
+
+            that.keydownHandler = function (e) {
+                var key = window.event ? e.keyCode : e.which;
+                // down (40), up (38)
+                if ((key == 40 || key == 38) && that.sc.innerHTML) {
+                    var next,
+                        sel = that.sc.querySelector('.autocomplete-suggestion.selected');
+                    if (!sel) {
+                        next = key == 40 ? that.sc.querySelector('.autocomplete-suggestion') : that.sc.childNodes[that.sc.childNodes.length - 1]; // first : last
+                        next.className += ' selected';
+                        that.value = next.getAttribute('data-val');
+                    } else {
+                        next = key == 40 ? sel.nextSibling : sel.previousSibling;
+                        if (next) {
+                            sel.className = sel.className.replace('selected', '');
+                            next.className += ' selected';
+                            that.value = next.getAttribute('data-val');
+                        } else {
+                            sel.className = sel.className.replace('selected', '');that.value = that.last_val;next = 0;
+                        }
+                    }
+                    that.updateSC(0, next);
+                    return false;
+                }
+                // esc
+                else if (key == 27) {
+                        that.value = that.last_val;that.sc.style.display = 'none';
+                    }
+                    // enter
+                    else if (key == 13 || key == 9) {
+                            var sel = that.sc.querySelector('.autocomplete-suggestion.selected');
+                            if (sel && that.sc.style.display != 'none') {
+                                o.onSelect(e, sel.getAttribute('data-val'), sel);setTimeout(function () {
+                                    that.sc.style.display = 'none';
+                                }, 20);
+                            }
+                        }
+            };
+            addEvent(that, 'keydown', that.keydownHandler);
+
+            that.keyupHandler = function (e) {
+                var key = window.event ? e.keyCode : e.which;
+                if (!key || (key < 35 || key > 40) && key != 13 && key != 27) {
+                    var val = that.value;
+                    if (val.length >= o.minChars) {
+                        if (val != that.last_val) {
+                            that.last_val = val;
+                            clearTimeout(that.timer);
+                            if (o.cache) {
+                                if (val in that.cache) {
+                                    suggest(that.cache[val]);return;
+                                }
+                                // no requests if previous suggestions were empty
+                                for (var i = 1; i < val.length - o.minChars; i++) {
+                                    var part = val.slice(0, val.length - i);
+                                    if (part in that.cache && !that.cache[part].length) {
+                                        suggest([]);return;
+                                    }
+                                }
+                            }
+                            that.timer = setTimeout(function () {
+                                o.source(val, suggest);
+                            }, o.delay);
+                        }
+                    } else {
+                        that.last_val = val;
+                        that.sc.style.display = 'none';
+                    }
+                }
+            };
+            addEvent(that, 'keyup', that.keyupHandler);
+
+            that.focusHandler = function (e) {
+                that.last_val = '\n';
+                that.keyupHandler(e);
+            };
+            if (!o.minChars) addEvent(that, 'focus', that.focusHandler);
+        }
+
+        // public destroy method
+        this.destroy = function () {
+            for (var i = 0; i < elems.length; i++) {
+                var that = elems[i];
+                removeEvent(window, 'resize', that.updateSC);
+                removeEvent(that, 'blur', that.blurHandler);
+                removeEvent(that, 'focus', that.focusHandler);
+                removeEvent(that, 'keydown', that.keydownHandler);
+                removeEvent(that, 'keyup', that.keyupHandler);
+                if (that.autocompleteAttr) that.setAttribute('autocomplete', that.autocompleteAttr);else that.removeAttribute('autocomplete');
+                document.body.removeChild(that.sc);
+                that = null;
+            }
+        };
+    }
+    return autoComplete;
+}();
+
+(function () {
+    if (true) !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+        return autoComplete;
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else if (typeof module !== 'undefined' && module.exports) module.exports = autoComplete;else window.autoComplete = autoComplete;
+})();
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios_index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animejs__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_animejs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_form_serialize__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_form_serialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_form_serialize__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_sweetalert__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+
+var submitQuotation = document.getElementById('submitQuotation'),
+    quotationForm = document.getElementById('quotationForm'),
+    site = document.getElementById('body').dataset.site,
+    scrollCoords = {
+  y: window.pageYOffset
+};
+
+var Business = function () {
+  function Business(business) {
+    _classCallCheck(this, Business);
+
+    this.business = business;
+
+    quotationForm.addEventListener('submit', this.getInfoFormBusiness.bind(this));
+    submitQuotation.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      __WEBPACK_IMPORTED_MODULE_0_axios_index___default.a.post(site + '/quotation', __WEBPACK_IMPORTED_MODULE_2_form_serialize___default()(quotationForm)).then(Business.quotationSendMail);
+    });
+  }
+
+  _createClass(Business, [{
+    key: "getInfoFormBusiness",
+    value: function getInfoFormBusiness(ev) {
+      ev.preventDefault();
+      this.business.setAttribute('disabled', true);
+      var data = {
+        origin: document.querySelector('input[name=origin]:checked').value,
+        days: document.querySelector('input[name=days]:checked').value,
+        car: document.querySelector('#car').value,
+        _token: document.querySelector('input[name=_token]').value
+      };
+      __WEBPACK_IMPORTED_MODULE_0_axios_index___default.a.post(site + '/ruta-empresarial', data).then(this.quotationSend.bind(this));
+    }
+  }, {
+    key: "quotationSend",
+    value: function quotationSend(response) {
+      this.business.removeAttribute('disabled');
+      document.querySelector('#price').value = response.data;
+      document.querySelector('#priceDisabled').value = response.data;
+      document.querySelector('#UserData').classList.remove('is-hidden');
+      __WEBPACK_IMPORTED_MODULE_1_animejs___default()({
+        targets: scrollCoords,
+        y: 800,
+        duration: 350,
+        easing: 'easeInOutCubic',
+        update: function update() {
+          return window.scroll(0, scrollCoords.y);
+        }
+      });
+    }
+  }], [{
+    key: "quotationSendMail",
+    value: function quotationSendMail(response) {
+      console.log(response);
+      __WEBPACK_IMPORTED_MODULE_3_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
+      quotationForm.reset();
+    }
+  }]);
+
+  return Business;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Business);
 
 /***/ })
 /******/ ]);
