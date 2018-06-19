@@ -71,12 +71,6 @@
 					<label for="i-v-c-d">Ida y vuelta con disponibilidad <span><img
 									src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
 
-<<<<<<< HEAD
-			<div class="col-6 m-t-8">
-				<div class="infoBox">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur mattis,mike </p>
-=======
->>>>>>> b28d591cb75890af540ec9117d82b101feac3158
 				</div>
 
 				<div class="col-6 m-t-8">
