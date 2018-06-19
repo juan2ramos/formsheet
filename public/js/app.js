@@ -1320,6 +1320,8 @@ module.exports = __webpack_require__(37);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormPrincipal__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormBusiness__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__onclick__ = __webpack_require__(44);
+
 
 
 
@@ -1331,6 +1333,7 @@ var quotation = document.getElementById('quotation');
 if (quotation) {
   new __WEBPACK_IMPORTED_MODULE_1__FormBusiness__["a" /* default */](quotation);
 }
+Object(__WEBPACK_IMPORTED_MODULE_2__onclick__["a" /* default */])();
 
 /***/ }),
 /* 14 */
@@ -3951,6 +3954,26 @@ var Business = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Business);
+
+/***/ }),
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+  var moreInfo = document.querySelectorAll('.moreInfo'),
+      infoBox = document.getElementById('infoBox');
+  if (moreInfo) {
+    moreInfo.forEach(function (el) {
+      el.addEventListener('click', function () {
+        var textInfo = this.dataset.content;
+        infoBox.innerText = textInfo;
+        console.log(textInfo);
+      });
+    });
+    console.log(moreInfo);
+  }
+});
 
 /***/ })
 /******/ ]);

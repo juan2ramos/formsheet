@@ -32,7 +32,7 @@
 
       <div class="row justify-center item">
           <div class="col-16 numberItem">
-              <p><span>2</span> Selecciona tu ciudad de origen </p>
+              <p><span>2</span> ¿Cuantos puestos necesitas? </p>
           </div>
           <div class="col-1 col-m-1 col-l-1 m-t-8">
               <input id="1" class="rectangle" type="radio" checked name="passenger" value="1">
