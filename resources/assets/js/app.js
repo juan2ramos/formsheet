@@ -49,11 +49,14 @@ function quotationSend(response) {
 
 const submitQuotation = document.getElementById('submitQuotation');
 const quotationForm = document.getElementById('quotationForm');
-submitQuotation.addEventListener('click', function (ev) {
-    ev.preventDefault();
-    axios.post(site + '/quotation', serialize(quotationForm))
-        .then(quotationSendMail);
-});
+if (quotationForm) {
+  submitQuotation.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      axios.post(site + '/quotation', serialize(quotationForm))
+          .then(quotationSendMail);
+  });
+}
+
 function quotationSendMail(response) {
     console.log(response)
     swal("Mensaje Enviado", "Gracias por contactarnos", "success");

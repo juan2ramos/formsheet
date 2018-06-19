@@ -3363,6 +3363,7 @@ textarea {
   position: relative;
   padding-left: 2.8rem;
   line-height: 2rem;
+  padding-top: 0;
 }
 
 [type=radio].circle + label:before {
@@ -3434,5 +3435,21 @@ textarea {
 
 .img-car img {
   width: 70%;
+}
+
+[type=radio].tipo-viaje + label {
+  display: block;
+  margin-top: -10px;
+}
+
+[type=radio].tipo-viaje + label span img {
+  vertical-align: top;
+  margin-left: 10px;
+}
+
+.infoBox {
+  background: #f7f7f7;
+  color: #abaaaa;
+  padding: 15px 20px;
 }
 

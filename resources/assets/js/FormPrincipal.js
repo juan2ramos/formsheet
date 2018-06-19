@@ -22,7 +22,7 @@ export default class Principal {
             carText = car.options[car.selectedIndex].text,
             init = document.getElementById('init').value,
             end = document.getElementById('init').value;
-
+        console.log(response.data);  
         let data = response.data,
             html = `<li> <b>Origen: </b> ${data.travel[0]}</li>`;
 
