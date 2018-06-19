@@ -11,7 +11,10 @@ class PrincipalController{
 
 	public function __construct() {
 		$this->sheet = 'Tarifas';
+	}
 
+	function principalMail( Request $request ) {
+		return $request->all();
 	}
 
 	function index() {
@@ -22,16 +25,17 @@ class PrincipalController{
 
 	function calculate( Request $request ) {
 
-		$request->validate([
-			'origin' => 'required',
+		$request->validate( [
+			'origin'  => 'required',
 			'destiny' => 'required',
-			'init' => 'required',
-			'end' => 'required',
-		]);
-		$input = $request->all();
-		$travel      = $this->getTravel( $input);
+			'init'    => 'required',
+			'end'     => 'required',
+		] );
+		$input       = $request->all();
+		$travel      = $this->getTravel( $input );
 		$travelValue = $this->getCalculate( $input, $travel );
-		return ['travelValue' => $travelValue, 'travel' => $travel];
+
+		return [ 'travelValue' => $travelValue, 'travel' => $travel ];
 	}
 
 	private function getTravel( $dataPost ) {
@@ -46,37 +50,34 @@ class PrincipalController{
 				return $travel[ $dataPost['car'] ];
 				break;
 			case 2:
-				return $this->formatValue($travel[ $dataPost['car'] ]) * 1.9;
+				return $this->formatValue( $travel[ $dataPost['car'] ] ) * 1.9;
 				break;
 			case 3:
-				return $this->with(  $dataPost, $travel,  'Base!C6');
+				return $this->with( $dataPost, $travel, 'Base!C6' );
 				break;
 			case 4:
-				return $this->with( $dataPost, $travel,'Base!C7');
+				return $this->with( $dataPost, $travel, 'Base!C7' );
 				break;
 		}
 	}
 
-	private function with(  $dataPost,$travel, $base ) {
+	private function with( $dataPost, $travel, $base ) {
 
 		$init = new Carbon( $dataPost['init'] );
 		$end  = new Carbon( $dataPost['end'] );
 		$days = $init->diffInDays( $end );
-		$base = $this->sheet($base )->first();
-		return $this->formatValue( $travel[$dataPost['car']]) + ( intval($days) * $this->formatValue( $base[0] ));
-	}
+		$base = $this->sheet( $base )->first();
 
+		return $this->formatValue( $travel[ $dataPost['car'] ] ) + ( intval( $days ) * $this->formatValue( $base[0] ) );
+	}
 
 	private function getCities() {
 
-		return $this->sheet('Tarifas!B2:B2000' );
+		return $this->sheet( 'Tarifas!B2:B2000' )->implode( '0', ', ' );
 	}
 
 	private function formatValue( $value ) {
 
 		return intval( str_replace( ".", "", str_replace( "$", "", $value ) ) );
 	}
-	public function e(){
-        return $this->sheet('Tarifas!B2:B2000' );
-    }
 }
