@@ -76,4 +76,7 @@ class PrincipalController{
 
 		return intval( str_replace( ".", "", str_replace( "$", "", $value ) ) );
 	}
+	public function e(){
+        return $this->sheet('Tarifas!B2:B2000' );
+    }
 }

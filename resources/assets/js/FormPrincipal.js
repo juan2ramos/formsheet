@@ -13,6 +13,7 @@ export default class Principal {
 
     getInfoFormPrincipal(ev) {
         ev.preventDefault();
+        console.log(serialize(this.principal))
         axios.post(site + '/principal', serialize(this.principal))
             .then(Principal.setInfoForm);
     }

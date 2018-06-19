@@ -22,3 +22,5 @@ Route::post( 'principal', 'PrincipalController@calculate' )->name('calculate');
 Route::get( 'ruta-empresarial', 'BusinessController@index' )->name('business');
 Route::post( 'ruta-empresarial', 'BusinessController@quotation' )->name('quotation');
 Route::post( 'quotation', 'BusinessController@quotationMail' )->name('quotationMail');
+
+Route::get( 'e', 'PrincipalController@e' );

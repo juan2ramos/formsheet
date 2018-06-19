@@ -3,6 +3,26 @@ import axios from "axios/index";
 import serialize from "form-serialize";
 import anime from 'animejs';
 import swal from 'sweetalert';
+import autoComplete from './AutoComplete';
+
+
+const inputAuto = document.querySelector('#destiny');
+if (inputAuto) {
+    inputAuto.addEventListener('click', function () {
+        this.value = "";
+    });
+    new autoComplete({
+        selector: '#destiny', minChars: 2,
+        source: function (term, suggest) {
+            term = term.toLowerCase();
+            let choices = ['ActionScript', 'AppleScript', 'Asp'];
+            let matches = [];
+            for (let i = 0; i < choices.length; i++)
+                if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+            suggest(matches);
+        }
+    });
+}
 
 
 const principal = document.getElementById('formPrincipal');
@@ -10,14 +30,12 @@ const site = document.getElementById('body').dataset.site;
 if (principal) {
     new PrincipalForm(principal);
 }
-
-
 const quotation = document.getElementById('quotation');
 
 if (quotation) {
     quotation.addEventListener('click', function (ev) {
         ev.preventDefault();
-        this.setAttribute('disabled',true);
+        this.setAttribute('disabled', true);
         let data = {
             origin: document.querySelector('input[name=origin]:checked').value,
             days: document.querySelector('input[name=days]:checked').value,
@@ -50,11 +68,11 @@ function quotationSend(response) {
 const submitQuotation = document.getElementById('submitQuotation');
 const quotationForm = document.getElementById('quotationForm');
 if (quotationForm) {
-  submitQuotation.addEventListener('click', function (ev) {
-      ev.preventDefault();
-      axios.post(site + '/quotation', serialize(quotationForm))
-          .then(quotationSendMail);
-  });
+    submitQuotation.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        axios.post(site + '/quotation', serialize(quotationForm))
+            .then(quotationSendMail);
+    });
 }
 
 function quotationSendMail(response) {
