@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-16 col-m-10 col-l-10">
 					<h3>Traslado dentro de la ciudad</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur mattis, leo orci luctus diam, sed auctor </p>
+					<p>Si estás en Bogotá, Villavicencio, Cali o Medellín y necesitas un vehículo de 4 a 42 pasajeros. Cotizalo aquí.</p>
 			</div>
 	</div>
   <div class="row justify-center">
@@ -97,23 +97,22 @@
   			<div class="col-10 m-t-8">
 
   				<input type="radio" id="recorrido" class="circle tipo-viaje" name="typeTransfer" value="1" placeholder="">
-  				<label for="recorrido">1 Recorrido (máx 1 hr - 30 km)</label>
+  				<label for="recorrido">1 recorrido <span class="moreInfo" data-content="Máximo 1 hora y 30 Km dentro del perimetro urbano." ><img src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
 
   				<input type="radio" id="airport" class="circle tipo-viaje" name="typeTransfer" value="2" placeholder="">
-  				<label for="airport">Aeropuerto</label>
+  				<label for="airport">Aeropuerto <span class="moreInfo" data-content="Te llevamos o te recogemos hacia o desde el aeropuerto." ><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
 
   				<input type="radio" id="i-v" class="circle tipo-viaje" name="typeTransfer" value="3" placeholder="">
-  				<label for="i-v">Ida y vuelta</label>
+  				<label for="i-v">Ida y vuelta <span class="moreInfo" data-content="Máximo 2 horas de recorrido. 3 horas de espera. Hasta 50 kilometros." ><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
 
   				<input type="radio" id="d-d" class="circle tipo-viaje" name="typeTransfer" value="4" placeholder="">
-  				<label for="d-d">Disponibilidad día.</label>
+  				<label for="d-d">Disponibilidad día. <span class="moreInfo" data-content="8 horas. Hasta 100 km." ><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
 
   		  </div>
 
   			<div class="col-6 m-t-8">
-  				<div class="infoBox infoBoxTransfer">
-  					<p>Máx 1 hora - 30 Kilometros</p>
-            <span>$ 50.000</span>
+  				<div class="infoBox infoBoxTransfer" id="infoBox">
+
   				</div>
   			</div>
 

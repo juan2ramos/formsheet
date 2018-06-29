@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-16 col-m-10 col-l-10">
 					<h3>Transporte puerta a puerta</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur mattis, leo orci luctus diam, sed auctor </p>
+					<p>Servicio disponible únicamente entre Bogotá y Villavicencio. Te recogemos en tu casa y te llevamos hasta donde necesites.</p>
 			</div>
 	</div>
   <div class="row justify-center">

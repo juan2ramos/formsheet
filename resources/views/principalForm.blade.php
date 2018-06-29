@@ -8,8 +8,7 @@
 			</div>
 			<div class="col-16 col-m-10 col-l-10">
 				<h3>Viaje fuera de la ciudad</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur mattis,
-					leo orci luctus diam, sed auctor </p>
+				<p>Viajamos a toda Colombia en vehículos desde 4 hasta 42 pasajeros. Obtén el precio exacto de tu servicio y las condiciones.</p>
 			</div>
 		</div>
 		<div class="row justify-center">
@@ -75,7 +74,7 @@
 
 				<div class="col-6 m-t-8">
 					<div class="infoBox" id="infoBox">
-						
+
 					</div>
 				</div>
 
