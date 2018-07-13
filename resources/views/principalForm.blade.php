@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="row justify-center">
-			<button type="button" name="button" class="btn-regresar">Regresar</button>
+			<a href="/"><button type="button" name="button" class="btn-regresar">Regresar</button></a>
 		</div>
 		<form id="formPrincipal" action="{{route('calculate')}}" method="post">
 			{{ csrf_field() }}
@@ -116,21 +116,21 @@
 					<p><span>5</span> Selecciona el tipo de vehículo </p>
 				</div>
 				<div class="col-6">
-					<select name="car" id="car">
-						<option value="">Selecciona el tipo de vehículo</option>
-						<option value="9">Camioneta/Minivan</option>
-						<option value="10">Doble cabina</option>
-						<option value="11">Microbus 11</option>
-						<option value="12">Microbus 19</option>
-						<option value="13">Buseta 23</option>
-						<option value="14">Buseton 30</option>
-						<option value="15">Buseton 40</option>
-						<option value="16">Bus 42</option>
+					<select id="car" name="car" data-url="{{env('APP_URL')}}">
+							<option value="">Selecciona el tipo de vehículo</option>
+							<option value="1" data-name="minivan">Camioneta/Minivan</option>
+							<option value="2" data-name="minibus11">Microbus 11</option>
+							<option value="3" data-name="microbus15">Microbus 15</option>
+							<option value="4" data-name="microbus18">Microbus 18</option>
+							<option value="5" data-name="buseta25">Buseta 25</option>
+							<option value="6" data-name="buseton30">Buseton 30</option>
+							<option value="7" data-name="buseton30">Buseton</option>
+							<option value="8" data-name="bus">Bus</option>
 					</select>
-				</div>
-				<div class="col-10 typeCar">
-					<img src="{{asset('images/microbus.png')}}" alt="">
-				</div>
+			</div>
+			<div class="col-10 typeCar">
+					<img id="imgCar" src="" alt="">
+			</div>
 			</div>
 			<!--div>
 				<h2>5. Tipo de vehículo</h2>

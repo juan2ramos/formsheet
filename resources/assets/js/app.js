@@ -1,6 +1,7 @@
 import PrincipalForm from './FormPrincipal';
 import Business from './FormBusiness';
 import onclick from './onclick';
+import onselect from './onselect';
 
 const principal = document.getElementById('formPrincipal');
 if (principal) {
@@ -11,3 +12,4 @@ if (quotation) {
   new Business(quotation);
 }
 onclick()
+onselect()

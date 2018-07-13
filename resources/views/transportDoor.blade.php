@@ -12,7 +12,7 @@
 			</div>
 	</div>
   <div class="row justify-center">
-		<button type="button" name="button" class="btn-regresar">Regresar</button>
+		<a href="/"><button type="button" name="button" class="btn-regresar">Regresar</button></a>
 	</div>
   <form action="" method="post" id="">
       {{ csrf_field() }}
