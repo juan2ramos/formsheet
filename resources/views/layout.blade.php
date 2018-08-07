@@ -13,6 +13,7 @@
 	<title>@yield('title') Formulario</title>
 	<link href="{{mix('css/app.css')}}" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+	<link href="https://estarter.co/css.css" rel="stylesheet">
 
 </head>
 <body data-site="{{env('APP_URL')}}" id="body">
