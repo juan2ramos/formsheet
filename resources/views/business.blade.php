@@ -103,11 +103,11 @@
                     </div>
                     <div class="row col-8 hours justify-evenly">
                         <p>Hora de ingreso:</p>
-                        <input type="time" name="hourInit" value="">
+                        <input type="time" name="hourInit" value="08:00">
                     </div>
                     <div class="row col-8 hours justify-evenly">
                         <p>Hora de salida:</p>
-                        <input type="time" name="hourEnd" value="">
+                        <input type="time" name="hourEnd"  value="21:00">
                     </div>
                 </div>
                 <div class="row justify-evenly item">
@@ -132,7 +132,7 @@
                     <div class="col-16 numberItem">
                         <p><span>6</span></p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-16">
                         <p>¿Ya cuenta con ruta empresarial?</p>
 
                         <input type="radio" id="yes" class="circle" name="haveService" value="SI" placeholder="">
@@ -148,7 +148,7 @@
                         <label for="no2">NO</label>
 
                     </div>
-                    <div class="col-6">
+                    <div class="col-16">
                         <p>¿Cuales son sus principales preocupaciones en transporte? Seleccione tantas opciones como desee</p>
                         <p>
                           <input type="checkbox" id="worries1" name="worries">
@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <div class="row justify-center">
-                    <button type="submit" name="button" id="submitQuotation" class="solCot"></button>
+                    <button type="submit" name="button" id="submitQuotation" class="solCot">SOLICITAR COTIZACIÓN </button>
                 </div>
 
             </div>
