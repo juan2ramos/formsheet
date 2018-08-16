@@ -4,7 +4,7 @@ export default function(){
   if (carro) {
     const url = carro.dataset.url;
     carro.addEventListener('change' , function(){
-      name = this.options[this.selectedIndex].dataset.name;
+      const name = this.options[this.selectedIndex].dataset.name;
       imgCar.src = url + "/images/" + name + ".jpg";
     })
   }

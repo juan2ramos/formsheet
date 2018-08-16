@@ -64,18 +64,18 @@
                 <div class="col-6">
                     <select id="car" name="car" data-url="{{env('APP_URL')}}">
                         <option value="">Selecciona el tipo de vehículo</option>
-                        <option value="1" data-name="minivan">Camioneta/Minivan</option>
-                        <option value="2" data-name="minibus11">Microbus 11</option>
-                        <option value="3" data-name="microbus15">Microbus 15</option>
-                        <option value="4" data-name="microbus18">Microbus 18</option>
-                        <option value="5" data-name="buseta25">Buseta 25</option>
-                        <option value="6" data-name="buseton30">Buseton 30</option>
-                        <option value="7" data-name="buseton30">Buseton</option>
-                        <option value="8" data-name="bus">Bus</option>
+                        <option value="1" data-name="minivan">6 Pasajeros</option>
+                        <option value="2" data-name="minibus11">11 Pasajeros</option>
+                        <option value="3" data-name="microbus15">15 Pasajeros</option>
+                        <option value="4" selected data-name="microbus18">19 Pasajeros</option>
+                        <option value="5" data-name="buseta25">23 Pasajeros</option>
+                        <option value="6" data-name="buseton30">30 Pasajeros</option>
+                        <option value="7" data-name="buseton30">40 Pasajeros</option>
+                        <option value="8" data-name="bus">42 Pasajeros</option>
                     </select>
                 </div>
                 <div class="col-10 typeCar">
-                    <img id="imgCar" src="" alt="">
+                    <img id="imgCar" src="{{url('/images/microbus18.jpg')}}" alt="">
                 </div>
             </div>
             <div class="row justify-center item">
