@@ -21,19 +21,19 @@
                     <p><span>1</span> Selecciona tu ciudad de origen </p>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
-                    <input id="cityBogota" class="rectangle" type="radio" checked name="origin" value="Bogotá">
+                    <input id="cityBogota" class="rectangle" type="radio" checked name="origin" value="Ruta Empresarial Bogota">
                     <label for="cityBogota">Bogotá</label>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
-                    <input id="cityVill" class="rectangle" type="radio" name="origin" value="Villavicencio">
+                    <input id="cityVill" class="rectangle" type="radio" name="origin" value="Ruta Empresarial Villavicencio">
                     <label for="cityVill">Villavicencio</label>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
-                    <input id="cityCali" class="rectangle" type="radio" name="origin" value="Calí">
+                    <input id="cityCali" class="rectangle" type="radio" name="origin" value="Ruta Empresarial Cali">
                     <label for="cityCali">Calí</label>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
-                    <input id="cityMede" class="rectangle" type="radio" name="origin" value="Medellín">
+                    <input id="cityMede" class="rectangle" type="radio" name="origin" value="Ruta Empresarial Medellin">
                     <label for="cityMede">Medellín</label>
                 </div>
 
