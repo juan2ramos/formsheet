@@ -79,21 +79,23 @@
                 </div>
             </div>
             <div class="row justify-center item">
+
+                <div class="row justify-center">
+                    <button type="submit" id="quotation" name="button" class="solCot">VER VALOR ESTIMADO</button>
+                </div>
+
+            </div>
+            <div id="UserData" class="is-hidden">
                 <div class="col-16">
                     <p class="is-text-center m-b-0">Valor Estimado</p>
                 </div>
                 <div class="col-8">
                     <input disabled type="text" value=" $0" id="priceDisabled">
-										<input type="hidden" name="price" value=" $0" id="price">
+                    <input type="hidden" name="price" value=" $0" id="price">
                 </div>
                 <div class="col-16 span">
                     <span>*Precio mensual basado en ruta de ida y vuelta sin peajes, lunes a viernes, hasta 50 km diarios.</span>
                 </div>
-                <div class="row justify-center">
-                    <button type="submit" id="quotation" name="button" class="solCot">SOLICITAR COTIZACIÓN</button>
-                </div>
-            </div>
-            <div id="UserData" class="is-hidden">
               <p class="is-text-center">Por favor completa los siguientes datos para enviarte una cotización personalizada, haremos lo posible por enviartela en las próximas 24 horas.</p>
                 <div class="row justify-center item">
                     <div class="col-16 numberItem">
@@ -203,7 +205,7 @@
                     </div>
                 </div>
                 <div class="row justify-center">
-                    <button type="submit" name="button" id="submitQuotation" class="solCot">SOLICITAR COTIZACIÓN</button>
+                    <button type="submit" name="button" id="submitQuotation" class="solCot"></button>
                 </div>
 
             </div>
