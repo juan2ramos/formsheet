@@ -116,7 +116,7 @@
                     </div>
                     <div class="col-6">
                         <label for="inicio">Fecha estimada de inicio</label>
-                        <input type="date" id="inicio" name="init" value="{{old('init')}}" placeholder="Inicio">
+                        <input type="text" id="inicio" class="inputDate" name="init" value="{{old('init')}}" placeholder="">
                     </div>
                     <div class="col-6">
                         <label for="fin">Duración del contrato</label>
@@ -135,7 +135,7 @@
                     <div class="col-16">
                         <p>¿Ya cuenta con ruta empresarial?</p>
 
-                        <input type="radio" id="yes" class="circle" name="haveService" value="SI" placeholder="">
+                        <input type="radio" id="yes" class="circle" name="haveService" value="SI" placeholder="" >
                         <label for="yes">SI</label>
                         <input type="radio" id="no" class="circle" name="haveService" value="NO" placeholder="">
                         <label for="no">NO</label>
@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <div class="row justify-center">
-                    <button type="submit" name="button" id="submitQuotation" class="solCot">SOLICITAR COTIZACIÓN </button>
+                    <button type="submit" name="button" id="submitQuotation" class="solCot" >SOLICITAR COTIZACIÓN </button>
                 </div>
 
             </div>
