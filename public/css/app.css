@@ -3466,6 +3466,15 @@ thead {
   font-weight: bold;
 }
 
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+  float: right;
+}
+
 .autocomplete-suggestions {
   text-align: left;
   cursor: default;

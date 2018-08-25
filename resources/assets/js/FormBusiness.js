@@ -13,14 +13,32 @@ const submitQuotation = document.getElementById('submitQuotation'),
 export default class Business {
   constructor(business) {
     this.business = business;
-
+    const self = this
     quotationForm.addEventListener('submit', this.getInfoFormBusiness.bind(this));
     submitQuotation.addEventListener('click', function (ev) {
       ev.preventDefault();
-      axios.post(site + '/quotation', serialize(quotationForm))
-        .then(Business.quotationSendMail);
+      if(self.validationForm()){
+        axios.post(site + '/quotation', serialize(quotationForm))
+          .then(Business.quotationSendMail);
+      }else {
+        swal("Reciba los campos en rojo", "Gracias por contactarnos", "error");
+      }
     });
   }
+  validationForm(){
+    let returnValidation = true
+    const radio = quotationForm.haveService;
+    const errorService = document.getElementById('haveService');
+
+    console.log(radio[1].checked);
+      if ( !(radio[0].checked || radio[1].checked) ) {
+        errorService.classList.remove("hidden");
+        returnValidation = false;
+      } else{
+        errorService.classList.add("hidden");
+      }
+      return returnValidation;
+    }
 
   getInfoFormBusiness(ev) {
     ev.preventDefault();

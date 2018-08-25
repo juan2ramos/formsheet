@@ -139,7 +139,7 @@
                         <label for="yes">SI</label>
                         <input type="radio" id="no" class="circle" name="haveService" value="NO" placeholder="">
                         <label for="no">NO</label>
-
+                        <span id="haveService" class="error hidden"> *Por Favor Complete este campo </span>
                         <p>¿Desea agendar una reunión informativa con Estárter?</p>
 
                         <input type="radio" id="yes2" class="circle" name="dateMeeting" value="SI" placeholder="">
