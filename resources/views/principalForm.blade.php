@@ -87,7 +87,7 @@
 				</div>
 				<div class="col-6">
 					<label for="inicio">Fecha de inicio del viaje</label>
-					<input type="date" id="init" class="inputDate" name="init" value="{{old('init')}}" placeholder="Inicio">
+					<input type="text" id="init" class="inputDate" name="init" value="{{old('init')}}" placeholder="Inicio">
 				</div>
 				<div class="col-6">
 					<label for="fin">Fecha de finalización</label>

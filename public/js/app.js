@@ -1427,119 +1427,127 @@ var site = document.getElementById('body').dataset.site,
     inputAuto = document.querySelector('#destiny'),
     submitPrincipal = document.querySelector('#submitPrincipal'),
     scrollCoords = {
-  y: window.pageYOffset
+    y: window.pageYOffset
 };
 
 var Principal = function () {
-  function Principal(principal) {
-    _classCallCheck(this, Principal);
+    function Principal(principal) {
+        _classCallCheck(this, Principal);
 
-    this.principal = principal;
+        this.principal = principal;
 
-    principal.addEventListener('submit', this.getInfoFormPrincipal.bind(this));
-    this.autoCompleteInput();
-    inputAuto.addEventListener('click', this.resetInputComplete());
-    submitPrincipal.addEventListener('click', this.submit.bind(this));
-  }
-
-  _createClass(Principal, [{
-    key: 'submit',
-    value: function submit(ev) {
-      console.log(ev);
-      var self = this;
-      ev.preventDefault();
-      if (self.validationForm()) {
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principalMail', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.principalSendMail.bind(this));
-      } else {
-        __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
-      }
+        principal.addEventListener('submit', this.getInfoFormPrincipal.bind(this));
+        this.autoCompleteInput();
+        inputAuto.addEventListener('click', this.resetInputComplete());
+        submitPrincipal.addEventListener('click', this.submit.bind(this));
     }
-  }, {
-    key: 'validationForm',
-    value: function validationForm() {
-      var returnValidation = true;
-      var destiny = document.getElementById('destiny').value;
-      var errorDestiny = document.getElementById('errorDestiny');
 
-      if (destiny == "" || destiny == null) {
-        errorDestiny.classList.remove("hidden");
-        document.getElementById('destiny').classList.add("errorInput");
-        returnValidation = false;
-      } else {
-        errorDestiny.classList.add("hidden");
-        document.getElementById('destiny').classList.remove("errorInput");
-      }
-
-      return returnValidation;
-    }
-  }, {
-    key: 'resetInputComplete',
-    value: function resetInputComplete() {
-      this.value = "";
-    }
-  }, {
-    key: 'autoCompleteInput',
-    value: function autoCompleteInput() {
-      new __WEBPACK_IMPORTED_MODULE_4__AutoComplete___default.a({
-        selector: '#destiny', minChars: 2,
-        source: function source(term, suggest) {
-          term = term.toLowerCase();
-          var choices = inputAuto.dataset.cities.split(', ');
-          var matches = [];
-          for (var i = 0; i < choices.length; i++) {
-            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-          }suggest(matches);
+    _createClass(Principal, [{
+        key: 'submit',
+        value: function submit(ev) {
+            ev.preventDefault();
+            console.log(ev);
+            var self = this;
+            ev.preventDefault();
+            if (self.validationForm()) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principalMail', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.principalSendMail.bind(this));
+            } else {
+                __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
+            }
         }
-      });
-    }
-  }, {
-    key: 'getInfoFormPrincipal',
-    value: function getInfoFormPrincipal(ev) {
-      ev.preventDefault();
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principal', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.setInfoForm);
-    }
-  }], [{
-    key: 'principalSendMail',
-    value: function principalSendMail(response) {
-      console.log(response.data);
-      __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
-      this.principal.reset();
-    }
-  }, {
-    key: 'setInfoForm',
-    value: function setInfoForm(response) {
-      var car = document.getElementById('car'),
-          carText = car.options[car.selectedIndex].text,
-          init = document.getElementById('init').value,
-          end = document.getElementById('init').value;
-      document.querySelector('#UserData').classList.remove('is-hidden');
-      __WEBPACK_IMPORTED_MODULE_3_animejs___default()({
-        targets: scrollCoords,
-        y: 1350,
-        duration: 700,
-        easing: 'easeInOutCubic',
-        update: function update() {
-          return window.scroll(0, scrollCoords.y);
+    }, {
+        key: 'validationForm',
+        value: function validationForm() {
+            var returnValidation = true;
+            var destiny = document.getElementById('destiny').value;
+            var errorDestiny = document.getElementById('errorDestiny');
+
+            if (destiny == "" || destiny == null) {
+                errorDestiny.classList.remove("hidden");
+                document.getElementById('destiny').classList.add("errorInput");
+                returnValidation = false;
+            } else {
+                errorDestiny.classList.add("hidden");
+                document.getElementById('destiny').classList.remove("errorInput");
+            }
+
+            return returnValidation;
         }
-      });
+    }, {
+        key: 'resetInputComplete',
+        value: function resetInputComplete() {
+            this.value = "";
+        }
+    }, {
+        key: 'autoCompleteInput',
+        value: function autoCompleteInput() {
+            new __WEBPACK_IMPORTED_MODULE_4__AutoComplete___default.a({
+                selector: '#destiny', minChars: 2,
+                source: function source(term, suggest) {
+                    term = term.toLowerCase();
+                    var choices = inputAuto.dataset.cities.split(', ');
+                    var matches = [];
+                    for (var i = 0; i < choices.length; i++) {
+                        if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+                    }suggest(matches);
+                }
+            });
+        }
+    }, {
+        key: 'getInfoFormPrincipal',
+        value: function getInfoFormPrincipal(ev) {
+            ev.preventDefault();
+            console.log(ev);
+            var self = this;
+            ev.preventDefault();
+            if (self.validationForm()) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principal', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.setInfoForm);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
+            }
+        }
+    }], [{
+        key: 'principalSendMail',
+        value: function principalSendMail(response) {
+            console.log(response.data);
+            __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
+            this.principal.reset();
+        }
+    }, {
+        key: 'setInfoForm',
+        value: function setInfoForm(response) {
+            var car = document.getElementById('car'),
+                carText = car.options[car.selectedIndex].text,
+                init = document.getElementById('init').value,
+                end = document.getElementById('init').value;
+            document.querySelector('#UserData').classList.remove('is-hidden');
+            __WEBPACK_IMPORTED_MODULE_3_animejs___default()({
+                targets: scrollCoords,
+                y: 1350,
+                duration: 700,
+                easing: 'easeInOutCubic',
+                update: function update() {
+                    return window.scroll(0, scrollCoords.y);
+                }
+            });
 
-      var data = response.data,
-          html = '<li> <b>Origen: </b> ' + data.travel[0] + '</li>';
+            var data = response.data,
+                html = '<li> <b>Origen: </b> ' + data.travel[0] + '</li>';
 
-      document.getElementById('price').value = data.travelValue;
-      document.getElementById('priceDisabled').value = data.travelValue;
+            document.getElementById('price').value = data.travelValue;
+            document.getElementById('priceDisabled').value = data.travelValue;
 
-      html += '<li> <b>Destino:  </b> ' + data.travel[1] + '</li>';
-      html += '<li> <b>Tipo de vehiculo: </b> ' + carText + '</li>';
-      html += '<li> <b>Distancia total: </b> ' + data.travel[3] + '</li>';
-      html += '<li> <b>Desde el: </b> ' + init + '</li>';
-      html += '<li> <b>Hasta el: </b> ' + end + '</li>';
+            html += '<li> <b>Destino:  </b> ' + data.travel[1] + '</li>';
+            html += '<li> <b>Tipo de vehiculo: </b> ' + carText + '</li>';
+            html += '<li> <b>Distancia total: </b> ' + data.travel[3] + '</li>';
+            html += '<li> <b>Desde el: </b> ' + init + '</li>';
+            html += '<li> <b>Hasta el: </b> ' + end + '</li>';
 
-      infoTravel.innerHTML = html;
-    }
-  }]);
+            infoTravel.innerHTML = html;
+        }
+    }]);
 
-  return Principal;
+    return Principal;
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Principal);
