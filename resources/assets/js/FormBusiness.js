@@ -80,7 +80,7 @@ export default class Business {
 
 
 
-  };
+  }
 
 
   getInfoFormBusiness(ev) {

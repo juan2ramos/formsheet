@@ -16,6 +16,7 @@ const site = document.getElementById('body').dataset.site,
 export default class Principal {
   constructor(principal) {
     this.principal = principal;
+
     principal.addEventListener('submit', this.getInfoFormPrincipal.bind(this));
     this.autoCompleteInput();
     inputAuto.addEventListener('click', this.resetInputComplete());
@@ -23,10 +24,34 @@ export default class Principal {
   }
 
   submit(ev) {
+    console.log(ev);
+    const self = this
     ev.preventDefault();
-    axios.post(site + '/principalMail', serialize(this.principal))
-      .then(Principal.principalSendMail.bind(this));
+    if(self.validationForm()){
+      axios.post(site + '/principalMail', serialize(this.principal))
+        .then(Principal.principalSendMail.bind(this));
+      }else {
+        swal("Revise los campos en rojo", "Gracias por contactarnos", "error");
+      }
   }
+  validationForm(){
+    let returnValidation = true
+    const destiny = document.getElementById('destiny').value;
+    const errorDestiny = document.getElementById('errorDestiny');
+
+      if ( destiny == "" || destiny == null) {
+        errorDestiny.classList.remove("hidden");
+        document.getElementById('destiny').classList.add("errorInput");
+        returnValidation = false;
+      } else {
+        errorDestiny.classList.add("hidden");
+        document.getElementById('destiny').classList.remove("errorInput");
+      }
+
+      return returnValidation;
+
+  }
+
 
   static principalSendMail(response) {
     console.log(response.data);

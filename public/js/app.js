@@ -1392,6 +1392,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__onclick__["a" /* default */])();
 Object(__WEBPACK_IMPORTED_MODULE_3__onselect__["a" /* default */])();
 
 __WEBPACK_IMPORTED_MODULE_4_tiny_date_picker___default()(document.querySelector('.inputDate'));
+console.log("alfo07");
 
 /***/ }),
 /* 16 */
@@ -1434,6 +1435,7 @@ var Principal = function () {
     _classCallCheck(this, Principal);
 
     this.principal = principal;
+
     principal.addEventListener('submit', this.getInfoFormPrincipal.bind(this));
     this.autoCompleteInput();
     inputAuto.addEventListener('click', this.resetInputComplete());
@@ -1443,8 +1445,32 @@ var Principal = function () {
   _createClass(Principal, [{
     key: 'submit',
     value: function submit(ev) {
+      console.log(ev);
+      var self = this;
       ev.preventDefault();
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principalMail', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.principalSendMail.bind(this));
+      if (self.validationForm()) {
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principalMail', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.principalSendMail.bind(this));
+      } else {
+        __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
+      }
+    }
+  }, {
+    key: 'validationForm',
+    value: function validationForm() {
+      var returnValidation = true;
+      var destiny = document.getElementById('destiny').value;
+      var errorDestiny = document.getElementById('errorDestiny');
+
+      if (destiny == "" || destiny == null) {
+        errorDestiny.classList.remove("hidden");
+        document.getElementById('destiny').classList.add("errorInput");
+        returnValidation = false;
+      } else {
+        errorDestiny.classList.add("hidden");
+        document.getElementById('destiny').classList.remove("errorInput");
+      }
+
+      return returnValidation;
     }
   }, {
     key: 'resetInputComplete',
@@ -4024,10 +4050,8 @@ var Business = function () {
       el.addEventListener('click', function () {
         var textInfo = this.dataset.content;
         infoBox.innerText = textInfo;
-        console.log(textInfo);
       });
     });
-    console.log(moreInfo);
   }
 });
 

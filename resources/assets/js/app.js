@@ -18,3 +18,4 @@ onselect()
 
 
 TinyDatePicker(document.querySelector('.inputDate'));
+console.log("alfo07");

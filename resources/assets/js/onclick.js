@@ -6,9 +6,9 @@ export default function(){
       el.addEventListener('click', function(){
         const textInfo = this.dataset.content;
         infoBox.innerText = textInfo;
-        console.log(textInfo);
+
       })
     })
-    console.log(moreInfo);
+    
   }
 }
