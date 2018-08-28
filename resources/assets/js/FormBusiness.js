@@ -21,7 +21,7 @@ export default class Business {
         axios.post(site + '/quotation', serialize(quotationForm))
           .then(Business.quotationSendMail);
       }else {
-        swal("Reciba los campos en rojo", "Gracias por contactarnos", "error");
+        swal("Revise los campos en rojo", "Gracias por contactarnos", "error");
       }
     });
   }
@@ -30,15 +30,58 @@ export default class Business {
     const radio = quotationForm.haveService;
     const errorService = document.getElementById('haveService');
 
-    console.log(radio[1].checked);
       if ( !(radio[0].checked || radio[1].checked) ) {
         errorService.classList.remove("hidden");
         returnValidation = false;
       } else{
         errorService.classList.add("hidden");
       }
+
+      const radioTwo = quotationForm.dateMeeting;
+      const errorServiceMeeting = document.getElementById('dateMeeting');
+      if ( !(radioTwo[0].checked || radioTwo[1].checked) ) {
+        errorServiceMeeting.classList.remove("hidden");
+        returnValidation = false;
+      } else{
+        errorServiceMeeting.classList.add("hidden");
+      }
+
+      const checkboxWorries = quotationForm.worries;
+      const errorWorries = document.getElementById('errorWorries');
+
+      if ( !(checkboxWorries[0].checked || checkboxWorries[1].checked || checkboxWorries[2].checked || checkboxWorries[3].checked || checkboxWorries[4].checked || checkboxWorries[5].checked || checkboxWorries[6].checked || checkboxWorries[7].checked) ) {
+        errorWorries.classList.remove("hidden");
+        returnValidation = false;
+      } else{
+        errorWorries.classList.add("hidden");
+      }
+
+      const inputName = document.getElementById('name').value;
+      const inputPhone = document.getElementById('phone').value;
+      const inputEmail = document.getElementById('email').value;
+      const errorDataPerson = document.getElementById('errorDataPerson');
+
+      if (inputName == "" || inputPhone == "" || inputEmail == "" ) {
+        errorDataPerson.classList.remove("hidden");
+        document.getElementById('name').classList.add("errorInput");
+        document.getElementById('phone').classList.add("errorInput");
+        document.getElementById('email').classList.add("errorInput");
+        returnValidation = false;
+      } else {
+        errorDataPerson.classList.add("hidden");
+        document.getElementById('name').classList.remove("errorInput");
+        document.getElementById('phone').classList.remove("errorInput");
+        document.getElementById('email').classList.remove("errorInput");
+      }
+
       return returnValidation;
-    }
+
+
+
+
+
+  };
+
 
   getInfoFormBusiness(ev) {
     ev.preventDefault();

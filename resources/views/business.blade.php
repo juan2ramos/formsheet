@@ -146,10 +146,12 @@
                         <label for="yes2">SI</label>
                         <input type="radio" id="no2" class="circle" name="dateMeeting" value="NO" placeholder="">
                         <label for="no2">NO</label>
+                        <span id="dateMeeting" class="error hidden"> *Por Favor Complete este campo </span>
 
                     </div>
                     <div class="col-16">
                         <p>¿Cuales son sus principales preocupaciones en transporte? Seleccione tantas opciones como desee</p>
+                        <span id="errorWorries" class="error hidden"> *Por Favor Seleccione una opcion </span> <br>
                         <p>
                           <input type="checkbox" id="worries1" name="worries">
                           <label for="worries1">Planificación y optimización de rutas</label>
@@ -192,13 +194,14 @@
                 <div class="row justify-evenly">
                     <div class="col-16 numberItem">
                         <p><span>7</span>Datos personales.</p>
+                        <span id="errorDataPerson" class="error hidden"> *Complete los campos </span>
                     </div>
                     <div class="col-6 datos-personales">
-                        <input type="text" name="name" value="" placeholder="Nombre y Apellidos">
-                        <input type="text" name="phone" value="" placeholder="Télefono o celular">
+                        <input type="text" id="name" class="" name="name" value="" placeholder="Nombre y Apellidos">
+                        <input type="text" id="phone" name="phone" value="" placeholder="Télefono o celular">
                     </div>
                     <div class="col-6 datos-personales">
-                        <input type="text" name="email" value="" placeholder="Correo electronico">
+                        <input type="text" id="email" name="email" value="" placeholder="Correo electronico">
                         <input id="politicas" type="checkbox" name="policies" value="Aceptó">
                         <label for="politicas">Acepto el tratamiento de datos personales y las politicas de
                             privacidad.</label>

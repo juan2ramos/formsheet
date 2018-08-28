@@ -1358,7 +1358,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(43);
+module.exports = __webpack_require__(42);
 
 
 /***/ }),
@@ -1371,7 +1371,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormBusiness__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__onclick__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__onselect__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tiny_date_picker__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tiny_date_picker__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tiny_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_tiny_date_picker__);
 
 
@@ -3909,7 +3909,7 @@ var Business = function () {
       if (self.validationForm()) {
         __WEBPACK_IMPORTED_MODULE_0_axios_index___default.a.post(site + '/quotation', __WEBPACK_IMPORTED_MODULE_2_form_serialize___default()(quotationForm)).then(Business.quotationSendMail);
       } else {
-        __WEBPACK_IMPORTED_MODULE_3_sweetalert___default()("Reciba los campos en rojo", "Gracias por contactarnos", "error");
+        __WEBPACK_IMPORTED_MODULE_3_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
       }
     });
   }
@@ -3921,13 +3921,50 @@ var Business = function () {
       var radio = quotationForm.haveService;
       var errorService = document.getElementById('haveService');
 
-      console.log(radio[1].checked);
       if (!(radio[0].checked || radio[1].checked)) {
         errorService.classList.remove("hidden");
         returnValidation = false;
       } else {
         errorService.classList.add("hidden");
       }
+
+      var radioTwo = quotationForm.dateMeeting;
+      var errorServiceMeeting = document.getElementById('dateMeeting');
+      if (!(radioTwo[0].checked || radioTwo[1].checked)) {
+        errorServiceMeeting.classList.remove("hidden");
+        returnValidation = false;
+      } else {
+        errorServiceMeeting.classList.add("hidden");
+      }
+
+      var checkboxWorries = quotationForm.worries;
+      var errorWorries = document.getElementById('errorWorries');
+
+      if (!(checkboxWorries[0].checked || checkboxWorries[1].checked || checkboxWorries[2].checked || checkboxWorries[3].checked || checkboxWorries[4].checked || checkboxWorries[5].checked || checkboxWorries[6].checked || checkboxWorries[7].checked)) {
+        errorWorries.classList.remove("hidden");
+        returnValidation = false;
+      } else {
+        errorWorries.classList.add("hidden");
+      }
+
+      var inputName = document.getElementById('name').value;
+      var inputPhone = document.getElementById('phone').value;
+      var inputEmail = document.getElementById('email').value;
+      var errorDataPerson = document.getElementById('errorDataPerson');
+
+      if (inputName == "" || inputPhone == "" || inputEmail == "") {
+        errorDataPerson.classList.remove("hidden");
+        document.getElementById('name').classList.add("errorInput");
+        document.getElementById('phone').classList.add("errorInput");
+        document.getElementById('email').classList.add("errorInput");
+        returnValidation = false;
+      } else {
+        errorDataPerson.classList.add("hidden");
+        document.getElementById('name').classList.remove("errorInput");
+        document.getElementById('phone').classList.remove("errorInput");
+        document.getElementById('email').classList.remove("errorInput");
+      }
+
       return returnValidation;
     }
   }, {
@@ -4012,8 +4049,7 @@ var Business = function () {
 });
 
 /***/ }),
-/* 41 */,
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
@@ -5220,7 +5256,7 @@ var Business = function () {
 
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

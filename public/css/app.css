@@ -3475,6 +3475,10 @@ thead {
   float: right;
 }
 
+.errorInput {
+  border-color: red !important;
+}
+
 .autocomplete-suggestions {
   text-align: left;
   cursor: default;
