@@ -3479,6 +3479,34 @@ thead {
   border-color: red !important;
 }
 
+.infoTravel {
+  background-color: #fafafa;
+  border: 1px solid #d3d3d3;
+  color: #7b7b7b;
+  width: 90%;
+  height: auto;
+  margin: auto;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.infoTravel li b {
+  color: #3e3e3e;
+}
+
+.valueAd {
+  color: #868686;
+  font-size: 12px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+#priceDisabled {
+  opacity: 1;
+  color: #3e3e3e;
+  font-size: 24px;
+}
+
 .autocomplete-suggestions {
   text-align: left;
   cursor: default;

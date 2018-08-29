@@ -1392,7 +1392,6 @@ Object(__WEBPACK_IMPORTED_MODULE_2__onclick__["a" /* default */])();
 Object(__WEBPACK_IMPORTED_MODULE_3__onselect__["a" /* default */])();
 
 __WEBPACK_IMPORTED_MODULE_4_tiny_date_picker___default()(document.querySelector('.inputDate'));
-console.log("alfo07");
 
 /***/ }),
 /* 16 */
@@ -1424,6 +1423,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var site = document.getElementById('body').dataset.site,
     infoTravel = document.getElementById('infoTravel'),
+    infoTravelCol2 = document.getElementById('infoTravelCol2'),
     inputAuto = document.querySelector('#destiny'),
     submitPrincipal = document.querySelector('#submitPrincipal'),
     scrollCoords = {
@@ -1449,26 +1449,33 @@ var Principal = function () {
             console.log(ev);
             var self = this;
             ev.preventDefault();
-            if (self.validationForm()) {
+            if (self.validationFormDataPerson()) {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principalMail', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.principalSendMail.bind(this));
             } else {
                 __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
             }
         }
     }, {
-        key: 'validationForm',
-        value: function validationForm() {
+        key: 'validationFormDataPerson',
+        value: function validationFormDataPerson() {
             var returnValidation = true;
-            var destiny = document.getElementById('destiny').value;
-            var errorDestiny = document.getElementById('errorDestiny');
 
-            if (destiny == "" || destiny == null) {
-                errorDestiny.classList.remove("hidden");
-                document.getElementById('destiny').classList.add("errorInput");
+            var inputName = document.getElementById('name').value;
+            var inputPhone = document.getElementById('phone').value;
+            var inputEmail = document.getElementById('email').value;
+            var errorDataPerson = document.getElementById('errorDataPerson');
+
+            if (inputName == "" || inputPhone == "" || inputEmail == "") {
+                errorDataPerson.classList.remove("hidden");
+                document.getElementById('name').classList.add("errorInput");
+                document.getElementById('phone').classList.add("errorInput");
+                document.getElementById('email').classList.add("errorInput");
                 returnValidation = false;
             } else {
-                errorDestiny.classList.add("hidden");
-                document.getElementById('destiny').classList.remove("errorInput");
+                errorDataPerson.classList.add("hidden");
+                document.getElementById('name').classList.remove("errorInput");
+                document.getElementById('phone').classList.remove("errorInput");
+                document.getElementById('email').classList.remove("errorInput");
             }
 
             return returnValidation;
@@ -1506,6 +1513,36 @@ var Principal = function () {
                 __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
             }
         }
+    }, {
+        key: 'validationForm',
+        value: function validationForm() {
+            var returnValidation = true;
+            var quotationForm = document.getElementById('formPrincipal');
+
+            var destiny = document.getElementById('destiny').value;
+            var errorDestiny = document.getElementById('errorDestiny');
+
+            if (destiny == "" || destiny == null) {
+                errorDestiny.classList.remove("hidden");
+                document.getElementById('destiny').classList.add("errorInput");
+                returnValidation = false;
+            } else {
+                errorDestiny.classList.add("hidden");
+                document.getElementById('destiny').classList.remove("errorInput");
+            }
+
+            var radiotravel = quotationForm.travel;
+            var errorTravel = document.getElementById('errorTravel');
+
+            if (!(radiotravel[0].checked || radiotravel[1].checked || radiotravel[2].checked || radiotravel[3].checked)) {
+                errorTravel.classList.remove("hidden");
+                returnValidation = false;
+            } else {
+                errorTravel.classList.add("hidden");
+            }
+
+            return returnValidation;
+        }
     }], [{
         key: 'principalSendMail',
         value: function principalSendMail(response) {
@@ -1532,18 +1569,22 @@ var Principal = function () {
             });
 
             var data = response.data,
-                html = '<li> <b>Origen: </b> ' + data.travel[0] + '</li>';
+                html = '<li> <b>Origen: </b> <br> ' + data.travel[0] + '</li>';
 
-            document.getElementById('price').value = data.travelValue;
-            document.getElementById('priceDisabled').value = data.travelValue;
+            document.getElementById('price').value = "$" + data.travelValue;
+            document.getElementById('priceDisabled').value = "$" + data.travelValue;
 
-            html += '<li> <b>Destino:  </b> ' + data.travel[1] + '</li>';
-            html += '<li> <b>Tipo de vehiculo: </b> ' + carText + '</li>';
-            html += '<li> <b>Distancia total: </b> ' + data.travel[3] + '</li>';
-            html += '<li> <b>Desde el: </b> ' + init + '</li>';
-            html += '<li> <b>Hasta el: </b> ' + end + '</li>';
+            html += '<li> <b>Destino:  </b> <br> ' + data.travel[1] + '</li>';
+            html += '<li> <b>Tipo de vehiculo: </b> <br> ' + carText + '</li>';
 
             infoTravel.innerHTML = html;
+
+            var dataCol2 = response.data,
+                html2 = '<li> <b>Distancia total: </b> <br>' + data.travel[3] + ' Km</li>';
+            html2 += '<li> <b>Desde el: </b> <br>' + init + '</li>';
+            html2 += '<li> <b>Hasta el: </b> <br>' + end + '</li>';
+
+            infoTravelCol2.innerHTML = html2;
         }
     }]);
 
