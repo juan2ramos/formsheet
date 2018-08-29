@@ -116,7 +116,7 @@
                     </div>
                     <div class="col-6">
                         <label for="inicio">Fecha estimada de inicio</label>
-                        <input type="text" id="inicio" class="inputDate" name="init" value="{{old('init')}}" placeholder="">
+                        <input type="date" id="inicio" class="inputDate" name="init" value="{{old('init')}}" placeholder="">
                     </div>
                     <div class="col-6">
                         <label for="fin">Duración del contrato</label>
