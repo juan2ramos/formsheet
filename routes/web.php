@@ -17,10 +17,6 @@ Route::post( 'quotation', 'BusinessController@quotationMail' )->name('quotationM
 Route::get( 'traslado-dentro-de-la-ciudad', 'TransferController@index' )->name('transfer');
 Route::get( 'transporte-puerta-a-puerta', 'TransportDoorController@index' )->name('transportDoor');
 Route::get('sendtest', function(){
-    Mail::raw('Mensaje enviado desde mailgun !', function($message)
-    {
-        $message->to('juan2ramos@gmail.com');
-        dd($message);
-    });
-    dd('das');
+   $jk = Mail::to('juan2ramos@gmail.com')->send(new \App\Mail\test());
+   dd($jk);
 });
