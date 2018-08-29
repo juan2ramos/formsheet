@@ -7,6 +7,7 @@ import swal from "sweetalert";
 
 const site = document.getElementById('body').dataset.site,
     infoTravel = document.getElementById('infoTravel'),
+    infoTravelCol2 = document.getElementById('infoTravelCol2'),
     inputAuto = document.querySelector('#destiny'),
     submitPrincipal = document.querySelector('#submitPrincipal'),
     scrollCoords = {
@@ -28,7 +29,7 @@ export default class Principal {
         console.log(ev);
         const self = this
         ev.preventDefault();
-        if (self.validationForm()) {
+        if (self.validationFormDataPerson()) {
             axios.post(site + '/principalMail', serialize(this.principal))
                 .then(Principal.principalSendMail.bind(this));
         } else {
@@ -38,19 +39,27 @@ export default class Principal {
 
     }
 
-    validationForm() {
+    validationFormDataPerson() {
         let returnValidation = true
-        const destiny = document.getElementById('destiny').value;
-        const errorDestiny = document.getElementById('errorDestiny');
 
-        if (destiny == "" || destiny == null) {
-            errorDestiny.classList.remove("hidden");
-            document.getElementById('destiny').classList.add("errorInput");
-            returnValidation = false;
+        const inputName = document.getElementById('name').value;
+        const inputPhone = document.getElementById('phone').value;
+        const inputEmail = document.getElementById('email').value;
+        const errorDataPerson = document.getElementById('errorDataPerson');
+
+        if (inputName == "" || inputPhone == "" || inputEmail == "" ) {
+          errorDataPerson.classList.remove("hidden");
+          document.getElementById('name').classList.add("errorInput");
+          document.getElementById('phone').classList.add("errorInput");
+          document.getElementById('email').classList.add("errorInput");
+          returnValidation = false;
         } else {
-            errorDestiny.classList.add("hidden");
-            document.getElementById('destiny').classList.remove("errorInput");
+          errorDataPerson.classList.add("hidden");
+          document.getElementById('name').classList.remove("errorInput");
+          document.getElementById('phone').classList.remove("errorInput");
+          document.getElementById('email').classList.remove("errorInput");
         }
+
 
         return returnValidation;
 
@@ -94,7 +103,36 @@ export default class Principal {
         }
 
     }
+    validationForm() {
+        let returnValidation = true
+        const quotationForm = document.getElementById('formPrincipal');
 
+        const destiny = document.getElementById('destiny').value;
+        const errorDestiny = document.getElementById('errorDestiny');
+
+        if (destiny == "" || destiny == null) {
+            errorDestiny.classList.remove("hidden");
+            document.getElementById('destiny').classList.add("errorInput");
+            returnValidation = false;
+        } else {
+            errorDestiny.classList.add("hidden");
+            document.getElementById('destiny').classList.remove("errorInput");
+        }
+
+        const radiotravel = quotationForm.travel;
+        const errorTravel = document.getElementById('errorTravel');
+        
+          if ( !(radiotravel[0].checked || radiotravel[1].checked || radiotravel[2].checked || radiotravel[3].checked) ) {
+            errorTravel.classList.remove("hidden");
+            returnValidation = false;
+          } else{
+            errorTravel.classList.add("hidden");
+          }
+
+
+        return returnValidation;
+
+    }
     static setInfoForm(response) {
         const car = document.getElementById('car'),
             carText = car.options[car.selectedIndex].text,
@@ -110,18 +148,23 @@ export default class Principal {
         });
 
         let data = response.data,
-            html = `<li> <b>Origen: </b> ${data.travel[0]}</li>`;
+            html = `<li> <b>Origen: </b> <br> ${data.travel[0]}</li>`;
 
-        document.getElementById('price').value = data.travelValue;
-        document.getElementById('priceDisabled').value = data.travelValue;
+        document.getElementById('price').value = "$" + data.travelValue;
+        document.getElementById('priceDisabled').value = "$" + data.travelValue;
 
-        html += `<li> <b>Destino:  </b> ${data.travel[1]}</li>`;
-        html += `<li> <b>Tipo de vehiculo: </b> ${carText}</li>`;
-        html += `<li> <b>Distancia total: </b> ${data.travel[3]}</li>`;
-        html += `<li> <b>Desde el: </b> ${init}</li>`;
-        html += `<li> <b>Hasta el: </b> ${end}</li>`;
+        html += `<li> <b>Destino:  </b> <br> ${data.travel[1]}</li>`;
+        html += `<li> <b>Tipo de vehiculo: </b> <br> ${carText}</li>`;
+
 
         infoTravel.innerHTML = html;
+
+        let dataCol2 = response.data,
+            html2 = `<li> <b>Distancia total: </b> <br>${data.travel[3]} Km</li>`;
+        html2 += `<li> <b>Desde el: </b> <br>${init}</li>`;
+        html2 += `<li> <b>Hasta el: </b> <br>${end}</li>`;
+
+        infoTravelCol2.innerHTML = html2;
     }
 
 

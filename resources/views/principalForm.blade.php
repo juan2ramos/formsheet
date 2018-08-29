@@ -51,6 +51,7 @@
 
 				<div class="col-16 numberItem">
 					<p><span>3</span> ¿Que tipo de viaje solicitas? </p>
+					<span id="errorTravel" class="error hidden"> *Por Favor seleccione una opción </span>
 				</div>
 
 				<div class="col-10 m-t-8">
@@ -58,6 +59,7 @@
 					<input type="radio" id="i-v-m-d" class="circle tipo-viaje" name="travel" value="1" placeholder="">
 					<label for="i-v-m-d" class="moreInfo" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur
 						mattis,uno" >Ida y vuelta el mismo día <span><img src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
+
 
 					<input type="radio" id="i-v-d-d" class="circle tipo-viaje" name="travel" value="2" placeholder="">
 					<label for="i-v-d-d" class="moreInfo" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim, massa sed efficitur
@@ -134,29 +136,30 @@
 						<input type="hidden" name="price" value=" $0" id="price">
 					</div>
 					<div class="col-16 col-m-8 col-l-8">
-						<div class="">
-							<ul id="infoTravel"></ul>
+						<div class="infoTravel">
+							<ul id="infoTravel" class="is-list-less"></ul>
 						</div>
 					</div>
 					<div class="col-16 col-m-1 col-l-8">
-						<div class="">
-							<ul id="infoTravel"></ul>
+						<div class="infoTravel">
+							<ul id="infoTravelCol2" class="is-list-less"></ul>
 						</div>
 					</div>
 					<div class="col-16">
-						<p>Valor Km adicional: $1000 Valor hora adicional: $ 30.000 Valor día adicional: $300.000</p>
+						<p class="valueAd">Valor Km adicional: $1000 Valor hora adicional: $ 30.000 Valor día adicional: $300.000</p>
 					</div>
 				</div>
 				<div class="row justify-evenly">
 					<div class="col-16 numberItem">
 						<p><span>6</span>Datos personales.</p>
+						<span id="errorDataPerson" class="error hidden"> *Complete los campos </span>
 					</div>
 					<div class="col-6 datos-personales">
-						<input type="text" name="name" value="" placeholder="Nombre y Apellidos">
-						<input type="text" name="phone" value="" placeholder="Télefono o celular">
+						<input type="text" id="name" name="name" value="" placeholder="Nombre y Apellidos">
+						<input type="text" id="phone" name="phone" value="" placeholder="Télefono o celular">
 					</div>
 					<div class="col-6 datos-personales">
-						<input type="email" name="email" value="" placeholder="Correo electronico">
+						<input type="email" id="email" name="email" value="" placeholder="Correo electronico">
 						<input id="politicas" type="checkbox" name="policies" value="YES">
 						<label for="politicas">Acepto el tratamiento de datos personales y las politicas de
 							privacidad.</label>
