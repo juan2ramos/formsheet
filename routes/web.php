@@ -20,3 +20,9 @@ Route::get('sendtest', function(){
    $jk = Mail::to('juan2ramos@gmail.com')->send(new \App\Mail\test());
    dd($jk);
 });
+
+Route::get('/space',function(){
+    return view('space');
+});
+Route::post('/space', 'AttachmentController@store')->name('space');
+Route::get('/show', 'AttachmentController@show')->name('show');
