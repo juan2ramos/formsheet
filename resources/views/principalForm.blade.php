@@ -111,14 +111,14 @@
                 <div class="col-6">
                     <select id="car" name="car" data-url="{{env('APP_URL')}}">
                         <option value="">Selecciona el tipo de vehículo</option>
-                        <option value="1" data-name="minivan">Camioneta/Minivan</option>
-                        <option value="2" data-name="minibus11">Microbus 11</option>
-                        <option value="3" data-name="microbus15">Microbus 15</option>
-                        <option value="4" selected data-name="microbus18">Microbus 18</option>
-                        <option value="5" data-name="buseta25">Buseta 25</option>
-                        <option value="6" data-name="buseton30">Buseton 30</option>
-                        <option value="7" data-name="buseton30">Buseton</option>
-                        <option value="8" data-name="bus">Bus</option>
+                        <option value="10" data-name="minivan">Camioneta/Minivan</option>
+                        <option value="11" data-name="minibus11">Microbus 11</option>
+                        <option value="12" data-name="microbus15">Microbus 15</option>
+                        <option value="13" selected data-name="microbus18">Microbus 18</option>
+                        <option value="14" data-name="buseta25">Buseta 25</option>
+                        <option value="15" data-name="buseton30">Buseton 30</option>
+                        <option value="16" data-name="buseton30">Buseton</option>
+                        <option value="17" data-name="bus">Bus</option>
                     </select>
                 </div>
                 <div class="col-10 typeCar">
@@ -147,7 +147,7 @@
                             <ul id="infoTravel" class="is-list-less"></ul>
                         </div>
                     </div>
-                    <div class="col-16 col-m-1 col-l-8">
+                    <div class="col-16 col-m-8 col-l-8">
                         <div class="infoTravel">
                             <ul id="infoTravelCol2" class="is-list-less"></ul>
                         </div>

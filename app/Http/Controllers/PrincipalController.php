@@ -60,7 +60,7 @@ class PrincipalController
 
         switch ($dataPost['travel']) {
             case 1:
-                return $travel[$dataPost['car']];
+                return $this->formatValue($travel[$dataPost['car']]);
                 break;
             case 2:
                 return $this->formatValue($travel[$dataPost['car']]) * 1.9;

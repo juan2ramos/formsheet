@@ -1575,8 +1575,8 @@ var Principal = function () {
             var data = response.data,
                 html = '<li> <b>Origen: </b> <br> ' + data.travel[0] + '</li>';
 
-            document.getElementById('price').value = "$" + data.travelValue;
-            document.getElementById('priceDisabled').value = "$" + data.travelValue;
+            document.getElementById('price').value = __WEBPACK_IMPORTED_MODULE_2_numeral___default()(data.travelValue).format('$0,0');
+            document.getElementById('priceDisabled').value = __WEBPACK_IMPORTED_MODULE_2_numeral___default()(data.travelValue).format('$0,0');
 
             html += '<li> <b>Destino:  </b> <br> ' + data.travel[1] + '</li>';
             html += '<li> <b>Tipo de vehiculo: </b> <br> ' + carText + '</li>';
