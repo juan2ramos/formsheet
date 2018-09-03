@@ -52,6 +52,13 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            'sslmode' => env('DB_SSLMODE', 'prefer'),
+            'options'   => array(
+                PDO::MYSQL_ATTR_SSL_KEY => env('SSL_KEY', 'server-key.pem'),
+                PDO::MYSQL_ATTR_SSL_CERT => env('SSL_CERT', 'server-cert.pem'),
+                PDO::MYSQL_ATTR_SSL_CA => env('SSL_CA', 'ca.pem'),
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
+            ),
         ],
 
         'pgsql' => [
