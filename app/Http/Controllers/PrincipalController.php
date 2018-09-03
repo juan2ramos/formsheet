@@ -14,6 +14,7 @@ class PrincipalController{
 	}
 
 	function principalMail( Request $request ) {
+
 		return $request->all();
 	}
 

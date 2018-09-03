@@ -25,4 +25,4 @@ Route::get('/space',function(){
     return view('space');
 });
 Route::post('/space', 'AttachmentController@store')->name('space');
-Route::get('/show', 'AttachmentController@show')->name('show');
+Route::get('/show', 'AttachmentController@show')->name('show');principalMail
