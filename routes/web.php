@@ -17,15 +17,8 @@ Route::post( 'quotation', 'BusinessController@quotationMail' )->name('quotationM
 Route::get( 'traslado-dentro-de-la-ciudad', 'TransferController@index' )->name('transfer');
 Route::get( 'transporte-puerta-a-puerta', 'TransportDoorController@index' )->name('transportDoor');
 Route::get('sendtest', function(){
-   $jk = Mail::to('juan2ramos@gmail.com')->send(new \App\Mail\test());
-   dd($jk);
+  Mail::to('juan2ramos@gmail.com')->send(new \App\Mail\test());
 });
-<<<<<<< HEAD
-=======
 
-Route::get('/space',function(){
-    return view('space');
-});
 Route::post('/space', 'AttachmentController@store')->name('space');
-Route::get('/show', 'AttachmentController@show')->name('show');principalMail
->>>>>>> da08bcf96916f00667674e8709c0e7a119fa6450
+Route::get('/show', 'AttachmentController@show')->name('show');

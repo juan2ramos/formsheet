@@ -1358,7 +1358,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(41);
+module.exports = __webpack_require__(42);
 
 
 /***/ }),
@@ -1371,7 +1371,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormBusiness__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__onclick__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__onselect__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__futureDate__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__futureDate__ = __webpack_require__(41);
 
 
 
@@ -1426,6 +1426,7 @@ var site = document.getElementById('body').dataset.site,
     infoTravel = document.getElementById('infoTravel'),
     infoTravelCol2 = document.getElementById('infoTravelCol2'),
     inputAuto = document.querySelector('#destiny'),
+    loadWrap = document.getElementById('loadWrap'),
     submitPrincipal = document.querySelector('#submitPrincipal'),
     scrollCoords = {
     y: window.pageYOffset
@@ -1447,10 +1448,10 @@ var Principal = function () {
         key: 'submit',
         value: function submit(ev) {
             ev.preventDefault();
-            console.log(ev);
             var self = this;
             ev.preventDefault();
             if (self.validationFormDataPerson()) {
+                loadWrap.classList.add('show');
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principalMail', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.principalSendMail.bind(this));
             } else {
                 __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
@@ -1505,10 +1506,10 @@ var Principal = function () {
         key: 'getInfoFormPrincipal',
         value: function getInfoFormPrincipal(ev) {
             ev.preventDefault();
-            console.log(ev);
             var self = this;
             ev.preventDefault();
             if (self.validationForm()) {
+                loadWrap.classList.add('show');
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/principal', __WEBPACK_IMPORTED_MODULE_1_form_serialize___default()(this.principal)).then(Principal.setInfoForm);
             } else {
                 __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
@@ -1547,13 +1548,15 @@ var Principal = function () {
     }], [{
         key: 'principalSendMail',
         value: function principalSendMail(response) {
-            console.log(response.data);
+            loadWrap.classList.remove('show');
             __WEBPACK_IMPORTED_MODULE_5_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
             this.principal.reset();
         }
     }, {
         key: 'setInfoForm',
         value: function setInfoForm(response) {
+            loadWrap.classList.remove('show');
+            console.log(response.data);
             var car = document.getElementById('car'),
                 carText = car.options[car.selectedIndex].text,
                 init = document.getElementById('init').value,
@@ -4129,16 +4132,6 @@ var Business = function () {
 
 /***/ }),
 /* 41 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4157,6 +4150,12 @@ var Business = function () {
     today = yy + '-' + mm + '-' + dd;
     el.setAttribute("min", today);
 });
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
