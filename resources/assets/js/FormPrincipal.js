@@ -35,8 +35,6 @@ export default class Principal {
         } else {
             swal("Revise los campos en rojo", "Gracias por contactarnos", "error");
         }
-
-
     }
 
     validationFormDataPerson() {
@@ -154,8 +152,8 @@ export default class Principal {
         let data = response.data,
             html = `<li> <b>Origen: </b> <br> ${data.travel[0]}</li>`;
 
-        document.getElementById('price').value = numeral(data.travelValue).format('$0,0' );
-        document.getElementById('priceDisabled').value = numeral(data.travelValue).format('$0,0' );
+        document.getElementById('price').value = numeral(data.travelValue).format('$0,0');
+        document.getElementById('priceDisabled').value = numeral(data.travelValue).format('$0,0');
 
         html += `<li> <b>Destino:  </b> <br> ${data.travel[1]}</li>`;
         html += `<li> <b>Tipo de vehiculo: </b> <br> ${carText}</li>`;

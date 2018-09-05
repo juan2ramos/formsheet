@@ -3325,7 +3325,8 @@ select,
 }
 
 [type=text],
-textarea {
+textarea,
+[type=email] {
   background: #f3f3f3;
   border: 1px solid #dcdcdc !important;
   border-radius: 0 !important;

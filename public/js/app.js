@@ -1372,6 +1372,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__onclick__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__onselect__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__futureDate__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Transfer__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__DoorForm__ = __webpack_require__(48);
+
+
 
 
 
@@ -1385,6 +1389,16 @@ if (principal) {
 var quotation = document.getElementById('quotation');
 if (quotation) {
     new __WEBPACK_IMPORTED_MODULE_1__FormBusiness__["a" /* default */](quotation);
+}
+
+var transferForm = document.getElementById('transferForm');
+if (transferForm) {
+    new __WEBPACK_IMPORTED_MODULE_5__Transfer__["a" /* default */](transferForm);
+}
+
+var Door = document.getElementById('DoorForm');
+if (Door) {
+    new __WEBPACK_IMPORTED_MODULE_6__DoorForm__["a" /* default */](Door);
 }
 
 document.querySelectorAll('[type=date]').forEach(function (el) {
@@ -4156,6 +4170,225 @@ var Business = function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios_index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sweetalert__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_form_serialize__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_form_serialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_form_serialize__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+
+var carEl = document.getElementById('car'),
+    typeEl = document.getElementsByName('typeTransfer'),
+    loadWrap = document.getElementById('loadWrap'),
+    site = document.getElementById('body').dataset.site;
+
+var Transfer = function () {
+    function Transfer(elForm) {
+        _classCallCheck(this, Transfer);
+
+        this.calculate();
+        this.form = elForm;
+        elForm.addEventListener('submit', this.getInfoFormPrincipal.bind(this));
+    }
+
+    _createClass(Transfer, [{
+        key: "getInfoFormPrincipal",
+        value: function getInfoFormPrincipal(ev) {
+            ev.preventDefault(ev);
+            ev.preventDefault();
+            if (Transfer.validationFormDataPerson()) {
+                loadWrap.classList.add('show');
+                __WEBPACK_IMPORTED_MODULE_1_axios_index___default.a.post(site + '/transferSubmit', __WEBPACK_IMPORTED_MODULE_3_form_serialize___default()(this.form)).then(Transfer.submitForm.bind(this));
+            } else {
+                __WEBPACK_IMPORTED_MODULE_2_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
+            }
+        }
+    }, {
+        key: "calculate",
+        value: function calculate() {
+            self = this;
+            carEl.addEventListener('change', this.SendCalculate);
+            typeEl.forEach(function (el) {
+                el.addEventListener('click', self.SendCalculate);
+            });
+        }
+    }, {
+        key: "SendCalculate",
+        value: function SendCalculate() {
+            var data = {
+                car: carEl.value,
+                type: document.querySelector('input[name="typeTransfer"]:checked').value
+            };
+            loadWrap.classList.add('show');
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(site + '/transferCalculate', data).then(Transfer.responseCalculate.bind(this));
+        }
+    }], [{
+        key: "submitForm",
+        value: function submitForm(response) {
+            loadWrap.classList.remove('show');
+            console.log(response.data);
+        }
+    }, {
+        key: "validationFormDataPerson",
+        value: function validationFormDataPerson() {
+            // Mike
+            return true;
+        }
+    }, {
+        key: "responseCalculate",
+        value: function responseCalculate(response) {
+            loadWrap.classList.remove('show');
+            document.getElementById('infoBox').innerText = response.data.price;
+        }
+    }]);
+
+    return Transfer;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Transfer);
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios_index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sweetalert__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_form_serialize__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_form_serialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_form_serialize__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_animejs__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_animejs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormPrincipal__ = __webpack_require__(16);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+
+
+
+var availability = document.getElementById('availability'),
+    loadWrap = document.getElementById('loadWrap'),
+    site = document.getElementById('body').dataset.site,
+    tables = document.getElementById('tables'),
+    IdDoorForm = document.getElementById('IdDoorForm'),
+    scrollCoords = {
+    y: window.pageYOffset
+};
+
+var DoorForm = function () {
+    function DoorForm(elForm) {
+        _classCallCheck(this, DoorForm);
+
+        this.elForm = elForm;
+        availability.addEventListener('click', this.getTravels.bind(this));
+        elForm.addEventListener('submit', this.submit.bind(this));
+    }
+
+    _createClass(DoorForm, [{
+        key: "submit",
+        value: function submit(ev) {
+            ev.preventDefault();
+            if (DoorForm.validationFormDataPerson()) {
+                loadWrap.classList.add('show');
+                __WEBPACK_IMPORTED_MODULE_1_axios_index___default.a.post(site + '/getTravelsDoorSend', __WEBPACK_IMPORTED_MODULE_3_form_serialize___default()(this.elForm)).then(DoorForm.principalSendMail.bind(this));
+            } else {
+                __WEBPACK_IMPORTED_MODULE_2_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
+            }
+        }
+    }, {
+        key: "getTravels",
+        value: function getTravels() {
+
+            if (DoorForm.validationFormDataPerson()) {
+                loadWrap.classList.add('show');
+                __WEBPACK_IMPORTED_MODULE_1_axios_index___default.a.post(site + '/getTravelsDoor', __WEBPACK_IMPORTED_MODULE_3_form_serialize___default()(this.elForm)).then(DoorForm.submitForm).catch(DoorForm.error);
+            } else {
+                __WEBPACK_IMPORTED_MODULE_2_sweetalert___default()("Revise los campos en rojo", "Gracias por contactarnos", "error");
+            }
+        }
+    }], [{
+        key: "principalSendMail",
+        value: function principalSendMail(response) {
+            loadWrap.classList.remove('show');
+            console.log(response.data);
+            __WEBPACK_IMPORTED_MODULE_2_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
+            this.principal.reset();
+        }
+    }, {
+        key: "validationFormDataPerson",
+        value: function validationFormDataPerson() {
+            // Mike
+            return true;
+        }
+    }, {
+        key: "submitForm",
+        value: function submitForm(response) {
+            loadWrap.classList.remove('show');
+            var travelsObject = Object.keys(response.data.travels);
+
+            if (travelsObject.length) {
+                document.querySelector('#UserData').classList.remove('is-hidden');
+                __WEBPACK_IMPORTED_MODULE_4_animejs___default()({
+                    targets: scrollCoords,
+                    y: 800,
+                    duration: 350,
+                    easing: 'easeInOutCubic',
+                    update: function update() {
+                        return window.scroll(0, scrollCoords.y);
+                    }
+                });
+
+                console.log(response.data.travels[2][3]);
+
+                var html = "";
+                for (var i = 1; i <= travelsObject.length; i++) {
+                    html += "<div class=\"col-16 col-m-16 col-l-7  m-t-8\">\n" + "                        <table class=\"is-text-center\">\n" + "                            <thead>\n" + "                            <tr>\n" + "                                <th></th>\n" + "                                <th>Horarios</th>\n" + "                                <th>Puestos</th>\n" + "                            </tr>\n" + "                            </thead>\n" + "                            <tbody>\n" + "                            <tr>\n" + "                                <td>\n" + "                                    <input id='politicas" + i + "' type=\"radio\" name=\"hour\" value=\"\">\n" + "                                    <label for='politicas" + i + "'></label>\n" + "                                </td>\n" + "                                <td>" + response.data.travels[i][2] + "</td>\n" + "                                <td>" + response.data.travels[i][3] + "</td>\n" + "                            </tr>\n" + "                            </tbody>\n" + "                        </table>\n" + "                    </div>";
+                }
+                tables.innerHTML = html;
+            } else {
+                __WEBPACK_IMPORTED_MODULE_2_sweetalert___default()("0 viajes disponibles", "Busca con otra fecha ", "warning");
+            }
+        }
+    }, {
+        key: "error",
+        value: function error(response) {
+            loadWrap.classList.remove('show');
+            __WEBPACK_IMPORTED_MODULE_2_sweetalert___default()("¡upss!", "Algo ha salido mal, recarga la página y vuelve a intentarlo", "error");
+        }
+    }]);
+
+    return DoorForm;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (DoorForm);
 
 /***/ })
 /******/ ]);

@@ -59,7 +59,7 @@
 
                 <div class="col-10 m-t-8">
 
-                    <input type="radio" id="i-v-m-d" class="circle tipo-viaje" name="travel" value="1" placeholder="">
+                    <input type="radio" id="i-v-m-d" class="circle tipo-viaje" checked name="travel" value="1" placeholder="">
                     <label for="i-v-m-d" class="moreInfo"
                            data-content="Ida y vuelta el mismo día Cuando vas hacia otra ciudad y vuelves el mismo día o no planeas volver en nuestro servicio">
                         Ida y vuelta el mismo día <span><img src="{{asset('images/iconincog.png')}}" alt=""></span>
@@ -83,7 +83,7 @@
 
                 <div class="col-6 m-t-8">
                     <div class="infoBox" id="infoBox">
-
+                        Ida y vuelta el mismo día Cuando vas hacia otra ciudad y vuelves el mismo día o no planeas volver en nuestro servicio
                     </div>
                 </div>
 
@@ -128,7 +128,7 @@
 
             <div class="row justify-center item">
                 <div class="row justify-center">
-                    <button type="submit" name="button" class="solCot">CONTINUAR</button>
+                    <button type="submit" name="button" class="solCot is-text-uppercase">Ver Valor Estimado</button>
                 </div>
             </div>
             <!-- segunda pantalla-->
@@ -167,7 +167,7 @@
                         <input type="text" id="phone" name="phone" value="" placeholder="Télefono o celular">
                     </div>
                     <div class="col-6 datos-personales">
-                        <input type="email" id="email" name="email" value="" placeholder="Correo electronico">
+                        <input type="email" class="datos-personalesEmail m-t-8" id="email" name="email" value="" placeholder="Correo electronico">
                         <input id="politicas" type="checkbox" name="policies" value="YES">
                         <label for="politicas">Acepto el tratamiento de datos personales y las politicas de
                             privacidad.</label>
