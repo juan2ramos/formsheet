@@ -36,7 +36,7 @@ export default class DoorForm {
         loadWrap.classList.remove('show');
         console.log(response.data);
         swal("Mensaje Enviado", "Gracias por contactarnos", "success");
-        this.principal.reset();
+        this.elForm.reset();
     }
 
     getTravels() {

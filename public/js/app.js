@@ -4340,7 +4340,7 @@ var DoorForm = function () {
             loadWrap.classList.remove('show');
             console.log(response.data);
             __WEBPACK_IMPORTED_MODULE_2_sweetalert___default()("Mensaje Enviado", "Gracias por contactarnos", "success");
-            this.principal.reset();
+            this.elForm.reset();
         }
     }, {
         key: "validationFormDataPerson",
