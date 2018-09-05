@@ -76,7 +76,7 @@
 									<option value="1" data-name="minivan">Camioneta/Minivan</option>
 									<option value="2" data-name="minibus11">Microbus 11</option>
 									<option value="3" data-name="microbus15">Microbus 15</option>
-									<option value="4" data-name="microbus18">Microbus 18</option>
+									<option value="4" selected data-name="microbus18">Microbus 18</option>
 									<option value="5" data-name="buseta25">Buseta 25</option>
 									<option value="6" data-name="buseton30">Buseton 30</option>
 									<option value="7" data-name="buseton30">Buseton</option>
@@ -84,7 +84,7 @@
 							</select>
 					</div>
 					<div class="col-10 typeCar">
-							<img id="imgCar" src="" alt="">
+							<img id="imgCar" src="{{asset('images/microbus18.jpg')}}" alt="">
 					</div>
       </div>
 
@@ -97,16 +97,16 @@
   			<div class="col-10 m-t-8">
 
   				<input type="radio" id="recorrido" class="circle tipo-viaje" name="typeTransfer" value="1" placeholder="">
-  				<label for="recorrido">1 recorrido <span class="moreInfo" data-content="Máximo 1 hora y 30 Km dentro del perimetro urbano." ><img src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
+  				<label for="recorrido" class="moreInfo" data-content="Máximo 1 hora y 30 Km dentro del perimetro urbano." >1 recorrido <span ><img src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
 
   				<input type="radio" id="airport" class="circle tipo-viaje" name="typeTransfer" value="2" placeholder="">
-  				<label for="airport">Aeropuerto <span class="moreInfo" data-content="Te llevamos o te recogemos hacia o desde el aeropuerto." ><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
+  				<label for="airport" class="moreInfo" data-content="Te llevamos o te recogemos hacia o desde el aeropuerto.">Aeropuerto <span  ><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
 
   				<input type="radio" id="i-v" class="circle tipo-viaje" name="typeTransfer" value="3" placeholder="">
-  				<label for="i-v">Ida y vuelta <span class="moreInfo" data-content="Máximo 2 horas de recorrido. 3 horas de espera. Hasta 50 kilometros." ><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
+  				<label for="i-v" class="moreInfo" data-content="Máximo 2 horas de recorrido. 3 horas de espera. Hasta 50 kilometros.">Ida y vuelta <span  ><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
 
   				<input type="radio" id="d-d" class="circle tipo-viaje" name="typeTransfer" value="4" placeholder="">
-  				<label for="d-d">Disponibilidad día. <span class="moreInfo" data-content="8 horas. Hasta 100 km." ><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
+  				<label for="d-d" class="moreInfo" data-content="8 horas. Hasta 100 km.">Disponibilidad día. <span><img src="{{asset('images/iconincog.png')}}" alt=""></span></label>
 
   		  </div>
 
