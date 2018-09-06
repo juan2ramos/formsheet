@@ -41,14 +41,15 @@
       <div class="row justify-evenly item">
           <div class="col-16 numberItem">
               <p><span>2</span></p>
+							<span id="errorDataPerson" class="error hidden"> *Complete los campos </span>
           </div>
           <div class="col-16 col-m-6 col-l-6 is-text-center">
               <p>Direccion de origen</p>
-              <input type="text" name="originAddress" value="">
+              <input id"originAddress" type="text" name="originAddress" value="">
           </div>
           <div class="col-16 col-m-6 col-l-6 is-text-center">
               <p>Direccion de destino</p>
-              <input type="text" name="destinyAddress" value="">
+              <input id="destinyAddress" type="text" name="destinyAddress" value="">
           </div>
       </div>
 
@@ -121,6 +122,7 @@
       <div class="row justify-evenly">
           <div class="col-16 numberItem">
               <p><span>6</span>Datos personales.</p>
+							<span id="errorDataPerson" class="error hidden"> *Complete los campos </span>
           </div>
           <div class="col-6 datos-personales">
               <input type="text" name="name" value="" placeholder="Nombre y Apellidos">

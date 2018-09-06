@@ -9,11 +9,11 @@ const site = document.getElementById('body').dataset.site,
     infoTravel = document.getElementById('infoTravel'),
     infoTravelCol2 = document.getElementById('infoTravelCol2'),
     inputAuto = document.querySelector('#destiny'),
+    loadWrap = document.getElementById('loadWrap'),
     submitPrincipal = document.querySelector('#submitPrincipal'),
     scrollCoords = {
         y: window.pageYOffset
     };
-
 export default class Principal {
     constructor(principal) {
         this.principal = principal;
@@ -26,17 +26,15 @@ export default class Principal {
 
     submit(ev) {
         ev.preventDefault();
-        console.log(ev);
         const self = this
         ev.preventDefault();
         if (self.validationFormDataPerson()) {
+            loadWrap.classList.add('show');
             axios.post(site + '/principalMail', serialize(this.principal))
                 .then(Principal.principalSendMail.bind(this));
         } else {
             swal("Revise los campos en rojo", "Gracias por contactarnos", "error");
         }
-
-
     }
 
     validationFormDataPerson() {
@@ -47,17 +45,17 @@ export default class Principal {
         const inputEmail = document.getElementById('email').value;
         const errorDataPerson = document.getElementById('errorDataPerson');
 
-        if (inputName == "" || inputPhone == "" || inputEmail == "" ) {
-          errorDataPerson.classList.remove("hidden");
-          document.getElementById('name').classList.add("errorInput");
-          document.getElementById('phone').classList.add("errorInput");
-          document.getElementById('email').classList.add("errorInput");
-          returnValidation = false;
+        if (inputName == "" || inputPhone == "" || inputEmail == "") {
+            errorDataPerson.classList.remove("hidden");
+            document.getElementById('name').classList.add("errorInput");
+            document.getElementById('phone').classList.add("errorInput");
+            document.getElementById('email').classList.add("errorInput");
+            returnValidation = false;
         } else {
-          errorDataPerson.classList.add("hidden");
-          document.getElementById('name').classList.remove("errorInput");
-          document.getElementById('phone').classList.remove("errorInput");
-          document.getElementById('email').classList.remove("errorInput");
+            errorDataPerson.classList.add("hidden");
+            document.getElementById('name').classList.remove("errorInput");
+            document.getElementById('phone').classList.remove("errorInput");
+            document.getElementById('email').classList.remove("errorInput");
         }
 
 
@@ -67,7 +65,7 @@ export default class Principal {
 
 
     static principalSendMail(response) {
-        console.log(response.data);
+        loadWrap.classList.remove('show');
         swal("Mensaje Enviado", "Gracias por contactarnos", "success");
         this.principal.reset();
     }
@@ -92,10 +90,10 @@ export default class Principal {
 
     getInfoFormPrincipal(ev) {
         ev.preventDefault();
-        console.log(ev);
         const self = this
         ev.preventDefault();
         if (self.validationForm()) {
+            loadWrap.classList.add('show');
             axios.post(site + '/principal', serialize(this.principal))
                 .then(Principal.setInfoForm);
         } else {
@@ -103,6 +101,7 @@ export default class Principal {
         }
 
     }
+
     validationForm() {
         let returnValidation = true
         const quotationForm = document.getElementById('formPrincipal');
@@ -121,19 +120,22 @@ export default class Principal {
 
         const radiotravel = quotationForm.travel;
         const errorTravel = document.getElementById('errorTravel');
-        
-          if ( !(radiotravel[0].checked || radiotravel[1].checked || radiotravel[2].checked || radiotravel[3].checked) ) {
+
+        if (!(radiotravel[0].checked || radiotravel[1].checked || radiotravel[2].checked || radiotravel[3].checked)) {
             errorTravel.classList.remove("hidden");
             returnValidation = false;
-          } else{
+        } else {
             errorTravel.classList.add("hidden");
-          }
+        }
 
 
         return returnValidation;
 
     }
+
     static setInfoForm(response) {
+        loadWrap.classList.remove('show');
+        console.log(response.data);
         const car = document.getElementById('car'),
             carText = car.options[car.selectedIndex].text,
             init = document.getElementById('init').value,
@@ -150,8 +152,8 @@ export default class Principal {
         let data = response.data,
             html = `<li> <b>Origen: </b> <br> ${data.travel[0]}</li>`;
 
-        document.getElementById('price').value = "$" + data.travelValue;
-        document.getElementById('priceDisabled').value = "$" + data.travelValue;
+        document.getElementById('price').value = numeral(data.travelValue).format('$0,0');
+        document.getElementById('priceDisabled').value = numeral(data.travelValue).format('$0,0');
 
         html += `<li> <b>Destino:  </b> <br> ${data.travel[1]}</li>`;
         html += `<li> <b>Tipo de vehiculo: </b> <br> ${carText}</li>`;
