@@ -5,6 +5,7 @@ import serialize from 'form-serialize';
 
 
 const carEl = document.getElementById('car'),
+    quotationForm = document.getElementById('transferForm'),
     typeEl = document.getElementsByName('typeTransfer'),
     loadWrap = document.getElementById('loadWrap'),
     site = document.getElementById('body').dataset.site;
@@ -12,6 +13,7 @@ const carEl = document.getElementById('car'),
 export default class Transfer {
 
     constructor(elForm) {
+      console.log("mike");
         this.calculate();
         this.form = elForm;
         elForm.addEventListener('submit', this.getInfoFormPrincipal.bind(this));
@@ -32,6 +34,7 @@ export default class Transfer {
 
     static submitForm(response) {
         loadWrap.classList.remove('show');
+        swal("Mensaje Enviado", "Gracias por contactarnos", "success");
         console.log(response.data)
     }
 
@@ -62,9 +65,18 @@ export default class Transfer {
             document.getElementById('phone').classList.remove("errorInput");
             document.getElementById('email').classList.remove("errorInput");
         }
+        const radio = quotationForm.typeTransfer;
+        const errorService = document.getElementById('haveService');
+        console.log(radio);
+
+        if (!(radio[0].checked || radio[1].checked || radio[2].checked || radio[3].checked)) {
+            errorService.classList.remove("hidden");
+            returnValidation = false;
+        } else {
+            errorService.classList.add("hidden");
+        }
 
         return returnValidation;
-
     }
 
     calculate() {
