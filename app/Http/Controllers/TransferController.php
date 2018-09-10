@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TransferController extends Controller
 {
-    use formTrait;
+    use FormTrait;
     private $sheet = 'Traslados Urbanos';
 
     public function index()
