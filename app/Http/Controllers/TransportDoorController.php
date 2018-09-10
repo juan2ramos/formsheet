@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TransportDoorController extends Controller
 {
-    use formTrait;
+    use FormTrait;
     private $sheet = 'Puerta a puerta';
 
     public function index()
