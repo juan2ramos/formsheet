@@ -436,7 +436,7 @@ sup {
   max-width: 100%;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 585px) {
   .col-m-1 {
     -ms-flex: 0 0 6.25%;
     -webkit-box-flex: 0;
@@ -923,7 +923,7 @@ sup {
   }
 }
 
-@media (min-width: 720px) {
+@media (min-width: 585px) {
   .justify-start-m {
     -webkit-box-pack: start;
     -ms-flex-pack: start;
@@ -1555,7 +1555,7 @@ input[disabled]:hover {
   margin-bottom: 1.6rem;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 585px) {
   .nav .row {
     margin-bottom: 0;
   }
@@ -3153,7 +3153,7 @@ input[disabled]:hover {
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 585px) {
   .hide-tablet {
     display: none;
   }
