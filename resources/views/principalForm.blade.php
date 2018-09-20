@@ -46,7 +46,7 @@
                     <p><span>2</span> ¿A donde viajas? </p>
                     <span id="errorDestiny" class="error hidden"> *Complete este campo </span>
                 </div>
-                <div class="col-16 col-m-4 col-l-4 m-t-8">
+                <div class="col-8 col-m-8 col-l-8 m-t-8">
                     <input data-cities="{{$cities}}" id="destiny" class="" type="text" name="destiny" value="">
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     <span id="errorTravel" class="error hidden"> *Por Favor seleccione una opción </span>
                 </div>
 
-                <div class="col-10 m-t-8">
+                <div class="col-16 m-t-8">
 
                     <input type="radio" id="i-v-m-d" class="circle tipo-viaje" checked name="travel" value="1" placeholder="">
                     <label for="i-v-m-d" class="moreInfo"
@@ -72,7 +72,7 @@
                     </label>
 
                     <input type="radio" id="i-v-s-d" class="circle tipo-viaje" name="travel" value="3" placeholder="">
-                    <label for="i-v-s-d" class="moreInfo" data-content="da y vuelta sin disponibilidad	Viajas a una ciudad lejana y nuestro vehículo te espera en la ciudad los días necesarios mientras regresas. No puedes hacer uso del vehículo durante estos días.">Ida y vuelta sin disponibilidad <span><img src="{{asset('images/iconincog.png')}}"
+                    <label for="i-v-s-d" class="moreInfo" data-content="Ida y vuelta sin disponibilidad	Viajas a una ciudad lejana y nuestro vehículo te espera en la ciudad los días necesarios mientras regresas. No puedes hacer uso del vehículo durante estos días.">Ida y vuelta sin disponibilidad <span><img src="{{asset('images/iconincog.png')}}"
                                                                                 alt=""></span> </label>
 
                     <input type="radio" id="i-v-c-d" class="circle tipo-viaje" name="travel" value="4" placeholder="">
@@ -81,8 +81,8 @@
 
                 </div>
 
-                <div class="col-6 m-t-8">
-                    <div class="infoBox" id="infoBox">
+                <div class="col-10 m-t-8 m-a">
+                    <div class="infoBox m-t-24" id="infoBox">
                         Ida y vuelta el mismo día Cuando vas hacia otra ciudad y vuelves el mismo día o no planeas volver en nuestro servicio
                     </div>
                 </div>

@@ -86,10 +86,10 @@
 
             </div>
             <div id="UserData" class="is-hidden">
-                <div class="col-16">
+                <div class="col-16 m-b-16">
                     <p class="is-text-center m-b-0">Valor Estimado</p>
                 </div>
-                <div class="col-8">
+                <div class="col-8 m-a m-b-8">
                     <input disabled type="text" value=" $0" id="priceDisabled">
                     <input type="hidden" name="price" value=" $0" id="price">
                 </div>
@@ -97,7 +97,7 @@
                     <span>*Precio mensual basado en ruta de ida y vuelta sin peajes, lunes a viernes, hasta 50 km diarios.</span>
                 </div>
               <p class="is-text-center">Por favor completa los siguientes datos para enviarte una cotización personalizada, haremos lo posible por enviartela en las próximas 24 horas.</p>
-                <div class="row justify-center item">
+                <div class="row justify-center item m-t-24">
                     <div class="col-16 numberItem">
                         <p><span>4</span> Selecciona el horario </p>
                     </div>
@@ -132,25 +132,25 @@
                     <div class="col-16 numberItem">
                         <p><span>6</span></p>
                     </div>
-                    <div class="col-16">
+                    <div class="col-16 is-text-center">
                         <p>¿Ya cuenta con ruta empresarial?</p>
 
-                        <input type="radio" id="yes" class="circle" name="haveService" value="SI" placeholder="" >
+                        <input type="radio" id="yes" class="circle m-b-16" name="haveService" value="SI" placeholder="" >
                         <label for="yes">SI</label>
-                        <input type="radio" id="no" class="circle" name="haveService" value="NO" placeholder="">
+                        <input type="radio" id="no" class="circle m-b-16" name="haveService" value="NO" placeholder="">
                         <label for="no">NO</label>
                         <span id="haveService" class="error hidden"> *Por Favor Complete este campo </span>
                         <p>¿Desea agendar una reunión informativa con Estárter?</p>
 
-                        <input type="radio" id="yes2" class="circle" name="dateMeeting" value="SI" placeholder="">
+                        <input type="radio" id="yes2" class="circle m-b-16" name="dateMeeting" value="SI" placeholder="">
                         <label for="yes2">SI</label>
-                        <input type="radio" id="no2" class="circle" name="dateMeeting" value="NO" placeholder="">
+                        <input type="radio" id="no2" class="circle m-b-16" name="dateMeeting" value="NO" placeholder="">
                         <label for="no2">NO</label>
                         <span id="dateMeeting" class="error hidden"> *Por Favor Complete este campo </span>
 
                     </div>
-                    <div class="col-16">
-                        <p>¿Cuales son sus principales preocupaciones en transporte? Seleccione tantas opciones como desee</p>
+                    <div class="col-16 m-t-16">
+                        <p class="is-text-center">¿Cuales son sus principales preocupaciones en transporte? Seleccione tantas opciones como desee</p>
                         <span id="errorWorries" class="error hidden"> *Por Favor Seleccione una opcion </span> <br>
                         <p>
                           <input type="checkbox" id="worries1" name="worries">

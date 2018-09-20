@@ -96,7 +96,7 @@
 					<span id="haveService" class="error hidden"> *Por Favor Seleccione una opcion </span>
   			</div>
 
-  			<div class="col-10 m-t-8">
+  			<div class="col-16 m-t-8 m-a">
 
   				<input type="radio" id="recorrido" class="circle tipo-viaje" name="typeTransfer" value="1" placeholder="">
   				<label for="recorrido" class="moreInfo" data-content="Máximo 1 hora y 30 Km dentro del perimetro urbano." >1 recorrido <span ><img src="{{asset('images/iconincog.png')}}" alt=""></span> </label>
@@ -112,13 +112,11 @@
 
   		  </div>
 
-  			<div class="col-6 m-t-8">
-					<div class="infoBox infoBoxTransfer" id="infoBox">
+  			<div class="col-10 m-t-8 m-a">
+					<div class="infoBox infoBoxTransfer m-t-24" id="infoBox">
 
   				</div>
-  				<div class="infoBox infoBoxTransfer" id="infoBox">
-
-  				</div>
+  				
   			</div>
 
   		</div>
