@@ -57,6 +57,7 @@ export default class DoorForm {
     }
 
     static submitForm(response) {
+
         loadWrap.classList.remove('show');
         const travelsObject = Object.keys(response.data.travels);
 
@@ -70,18 +71,19 @@ export default class DoorForm {
                 update: () => window.scroll(0, scrollCoords.y)
             });
 
-            console.log(response.data.travels[2][3])
+
 
             let html = "";
-            for (let i = 1; i <= travelsObject.length; i++) {
+            for (let i = 0; i < travelsObject.length; i++) {
+                console.log(response.data.travels[travelsObject[i]])
                 html += "<div class=\"col-16 col-m-16 col-l-7  m-t-8\">\n" +
                     "                        <table class=\"is-text-center\">\n" +
                     "                            <thead>\n" +
                     "                            <tr>\n" +
                     "                                <th></th>\n" +
                     "                                <th>Horarios</th>\n" +
-                    "                                <th>Puestos</th>\n" +
                     "                            </tr>\n" +
+                    "                                <th>Puestos</th>\n" +
                     "                            </thead>\n" +
                     "                            <tbody>\n" +
                     "                            <tr>\n" +
@@ -89,8 +91,8 @@ export default class DoorForm {
                     "                                    <input id='politicas" + i + "' type=\"radio\" name=\"hour\" value=\"\">\n" +
                     "                                    <label for='politicas" + i + "'></label>\n" +
                     "                                </td>\n" +
-                    "                                <td>" + response.data.travels[i][2] + "</td>\n" +
-                    "                                <td>" + response.data.travels[i][3] + "</td>\n" +
+                    "                                <td>" + response.data.travels[travelsObject[i]][2] + "</td>\n" +
+                    "                                <td>" + response.data.travels[travelsObject[i]][3] + "</td>\n" +
                     "                            </tr>\n" +
                     "                            </tbody>\n" +
                     "                        </table>\n" +
