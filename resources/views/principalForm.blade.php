@@ -24,20 +24,21 @@
                     <p><span>1</span> Selecciona tu ciudad de origen </p>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
-                    <input id="cityBogo" class="rectangle" type="radio" name="origin" value="BOGOTA" checked>
+                    <input id="cityBogo" class="rectangle" type="radio" name="origin" value="BOGOTA">
                     <label for="cityBogo">Bogotá</label>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
                     <input id="cityVill" class="rectangle" type="radio" name="origin" value="Villavicencio">
                     <label for="cityVill">Villavicencio</label>
                 </div>
-                <div class="col-16 col-m-4 col-l-4 m-t-8">
-                    <input id="cityCali" class="rectangle" type="radio" name="origin" value="Calí">
-                    <label for="cityCali">Calí</label>
-                </div>
+
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
                     <input id="cityMede" class="rectangle" type="radio" name="origin" value="Medellín">
                     <label for="cityMede">Medellín</label>
+                </div>
+                <div class="col-16 col-m-4 col-l-4 m-t-8">
+                    <input id="cityCali" class="rectangle" type="radio" name="origin" value="Calí">
+                    <label for="cityCali">Calí</label>
                 </div>
             </div>
 
@@ -47,7 +48,7 @@
                     <span id="errorDestiny" class="error hidden"> *Complete este campo </span>
                 </div>
                 <div class="col-8 col-m-8 col-l-8 m-t-8">
-                    <input data-cities="{{$cities}}" id="destiny" class="" type="text" name="destiny" value="">
+                    <input disabled data-cities="{{$cities}}" id="destiny" class="" type="text" name="destiny" value="">
                 </div>
             </div>
             <div class="row justify-between item">
@@ -57,7 +58,7 @@
                     <span id="errorTravel" class="error hidden"> *Por Favor seleccione una opción </span>
                 </div>
 
-                <div class="col-16 m-t-8">
+                <div class="col-16 m-t-8 ">
 
                     <input type="radio" id="i-v-m-d" class="circle tipo-viaje" checked name="travel" value="1" placeholder="">
                     <label for="i-v-m-d" class="moreInfo"
@@ -98,7 +99,7 @@
                     <input type="date" id="init" class="inputDate" name="init" value="{{old('init')}}"
                            placeholder="Inicio">
                 </div>
-                <div class="col-6">
+            <div class="col-6 hidden" id="DateEnd">
                     <label for="fin">Fecha de finalización</label>
                     <input type="date" id="end" class="inputDate" name="end" value="{{old('end')}}" placeholder="Final">
                 </div>
@@ -134,10 +135,8 @@
             <!-- segunda pantalla-->
             <div class="is-hidden" id="UserData">
                 <div class="row justify-center item">
-                    <div class="col-16 col-m-8 col-l-8 img-car">
-                        <img src="{{asset('images/microbus.png')}}" alt="">
-                    </div>
-                    <div class="col-16 col-m-8 col-l-8">
+
+                    <div class="col-16 m-b-16">
                         <p>Valor estimado</p>
                         <input type="text" disabled name="" value=" $0" id="priceDisabled">
                         <input type="hidden" name="price" value=" $0" id="price">

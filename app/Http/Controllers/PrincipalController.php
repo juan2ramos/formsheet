@@ -24,7 +24,6 @@ class PrincipalController
     function index()
     {
         $cities = $this->getCities();
-
         return view('principalForm', compact('cities'));
     }
 
@@ -35,7 +34,6 @@ class PrincipalController
             'origin' => 'required',
             'destiny' => 'required',
             'init' => 'required',
-            'end' => 'required',
         ]);
         $input = $request->all();
         $travel = $this->getTravel($input);
@@ -88,8 +86,7 @@ class PrincipalController
 
     private function getCities()
     {
-
-        return $this->sheet('Destinos!A2:A2000')->implode('0', ', ');
+        return $this->sheet('Destinos!A2:D2000', true);
     }
 
     private function formatValue($value)

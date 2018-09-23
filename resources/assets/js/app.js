@@ -5,6 +5,7 @@ import onselect from './onselect';
 import futureDate from './futureDate'
 import Transfer from './Transfer'
 import DoorForm from './DoorForm'
+import Date from './DateValidation'
 
 
 const principal = document.getElementById('formPrincipal');
@@ -30,5 +31,17 @@ document.querySelectorAll('[type=date]').forEach(function (el) {
     futureDate(el)
 });
 
-onclick()
-onselect()
+document.querySelectorAll('[name=travel]').forEach(function (el) {
+    const DateEnd = document.querySelector('#DateEnd');
+    el.addEventListener('change', function () {
+        if (el.value === "1") {
+            DateEnd.classList.add('hidden')
+        } else {
+            DateEnd.classList.remove('hidden')
+        }
+    })
+});
+
+onclick();
+onselect();
+Date();

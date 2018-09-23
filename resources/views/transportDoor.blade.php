@@ -72,10 +72,6 @@
                     <div class="col-16 numberItem">
                         <p><span>4</span>Vehículos disponibles</p>
                     </div>
-                    <div class="col-16 col-m-6 col-l-6 is-text-center">
-                        <p>Fecha de viaje</p>
-                        <input type="date" id="init" name="init" value="{{old('init')}}" placeholder="Inicio">
-                    </div>
                 </div>
                 <div class="row justify-evenly item" id="tables">
 

@@ -11,6 +11,7 @@ const site = document.getElementById('body').dataset.site,
     inputAuto = document.querySelector('#destiny'),
     loadWrap = document.getElementById('loadWrap'),
     submitPrincipal = document.querySelector('#submitPrincipal'),
+    citiesData = JSON.parse(inputAuto.dataset.cities),
     scrollCoords = {
         y: window.pageYOffset
     };
@@ -75,18 +76,34 @@ export default class Principal {
     }
 
     autoCompleteInput() {
-        new autoComplete({
-            selector: '#destiny', minChars: 2,
-            source: function (term, suggest) {
-                term = term.toLowerCase();
-                let choices = inputAuto.dataset.cities.split(', ');
-                let matches = [];
-                for (let i = 0; i < choices.length; i++)
-                    if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-                suggest(matches);
-            }
+        const city = document.querySelectorAll('[name=origin]'),
+            normal = {
+                'BOGOTA': 0,
+                'Villavicencio': 1,
+                'Medellín': '2',
+                'Calí': 3,
+            };
+        let cityValue = 'BOGOTA';
+        city.forEach(function (el) {
+            el.addEventListener('change', function () {
+                inputAuto.value = "";
+                inputAuto.disabled = false
+                cityValue = this.value;
+                new autoComplete({
+                    selector: '#destiny', minChars: 2,
+                    source: function (term, suggest) {
+                        term = term.toLowerCase();
+                        let choices = citiesData[normal[cityValue]];
+                        let matches = [];
+                        for (let i = 0; i < choices.length; i++)
+                            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+                        suggest(matches);
+                    }
+                });
+            });
         });
     }
+
 
     getInfoFormPrincipal(ev) {
         ev.preventDefault();

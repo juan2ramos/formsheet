@@ -71,36 +71,34 @@ export default class DoorForm {
                 update: () => window.scroll(0, scrollCoords.y)
             });
 
-
-
             let html = "";
             for (let i = 0; i < travelsObject.length; i++) {
-                console.log(response.data.travels[travelsObject[i]])
-                html += "<div class=\"col-16 col-m-16 col-l-7  m-t-8\">\n" +
-                    "                        <table class=\"is-text-center\">\n" +
-                    "                            <thead>\n" +
-                    "                            <tr>\n" +
-                    "                                <th></th>\n" +
-                    "                                <th>Horarios</th>\n" +
-                    "                            </tr>\n" +
-                    "                                <th>Puestos</th>\n" +
-                    "                            </thead>\n" +
-                    "                            <tbody>\n" +
-                    "                            <tr>\n" +
-                    "                                <td>\n" +
-                    "                                    <input id='politicas" + i + "' type=\"radio\" name=\"hour\" value=\"\">\n" +
-                    "                                    <label for='politicas" + i + "'></label>\n" +
+                html += "<div class=\"col-16 col-m-16 col-l-7  m-t-8\">" +
+                    "                        <table class=\"is-text-center\">" +
+                    "                            <thead>" +
+                    "                            <tr>" +
+                    "                                <th></th>" +
+                    "                                <th>Horarios</th>" +
+                    "                                <th>Puestos</th>" +
+                    "                            </tr>" +
+                    "                            </thead>" +
+                    "                            <tbody>" +
+                    "                            <tr>" +
+                    "                                <td>" +
+                    "                                    <input id='politicas" + i + "' type=\"radio\" name=\"hour\" value=\"\">" +
+                    "                                    <label for='politicas" + i + "'></label>" +
                     "                                </td>\n" +
-                    "                                <td>" + response.data.travels[travelsObject[i]][2] + "</td>\n" +
-                    "                                <td>" + response.data.travels[travelsObject[i]][3] + "</td>\n" +
-                    "                            </tr>\n" +
-                    "                            </tbody>\n" +
-                    "                        </table>\n" +
+                    "                                <td>" + response.data.travels[travelsObject[i]][2] + "</td>" +
+                    "                                <td>" + response.data.travels[travelsObject[i]][3] + "</td>" +
+                    "                            </tr>" +
+                    "                            </tbody>" +
+                    "                        </table>" +
                     "                    </div>"
             }
             tables.innerHTML = html;
 
         } else {
+            document.querySelector('#UserData').classList.add('is-hidden');
             swal("0 viajes disponibles", "Busca con otra fecha ", "warning");
         }
 

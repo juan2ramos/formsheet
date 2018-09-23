@@ -859,6 +859,7 @@ var site = document.getElementById('body').dataset.site,
     inputAuto = document.querySelector('#destiny'),
     loadWrap = document.getElementById('loadWrap'),
     submitPrincipal = document.querySelector('#submitPrincipal'),
+    citiesData = JSON.parse(inputAuto.dataset.cities),
     scrollCoords = {
     y: window.pageYOffset
 };
@@ -921,16 +922,31 @@ var Principal = function () {
     }, {
         key: 'autoCompleteInput',
         value: function autoCompleteInput() {
-            new __WEBPACK_IMPORTED_MODULE_4__AutoComplete___default.a({
-                selector: '#destiny', minChars: 2,
-                source: function source(term, suggest) {
-                    term = term.toLowerCase();
-                    var choices = inputAuto.dataset.cities.split(', ');
-                    var matches = [];
-                    for (var i = 0; i < choices.length; i++) {
-                        if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-                    }suggest(matches);
-                }
+            var city = document.querySelectorAll('[name=origin]'),
+                normal = {
+                'BOGOTA': 0,
+                'Villavicencio': 1,
+                'Medellín': '2',
+                'Calí': 3
+            };
+            var cityValue = 'BOGOTA';
+            city.forEach(function (el) {
+                el.addEventListener('change', function () {
+                    inputAuto.value = "";
+                    inputAuto.disabled = false;
+                    cityValue = this.value;
+                    new __WEBPACK_IMPORTED_MODULE_4__AutoComplete___default.a({
+                        selector: '#destiny', minChars: 2,
+                        source: function source(term, suggest) {
+                            term = term.toLowerCase();
+                            var choices = citiesData[normal[cityValue]];
+                            var matches = [];
+                            for (var i = 0; i < choices.length; i++) {
+                                if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+                            }suggest(matches);
+                        }
+                    });
+                });
             });
         }
     }, {
@@ -1577,6 +1593,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__futureDate__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Transfer__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__DoorForm__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__DateValidation__ = __webpack_require__(49);
+
 
 
 
@@ -1608,8 +1626,20 @@ document.querySelectorAll('[type=date]').forEach(function (el) {
     Object(__WEBPACK_IMPORTED_MODULE_4__futureDate__["a" /* default */])(el);
 });
 
+document.querySelectorAll('[name=travel]').forEach(function (el) {
+    var DateEnd = document.querySelector('#DateEnd');
+    el.addEventListener('change', function () {
+        if (el.value === "1") {
+            DateEnd.classList.add('hidden');
+        } else {
+            DateEnd.classList.remove('hidden');
+        }
+    });
+});
+
 Object(__WEBPACK_IMPORTED_MODULE_2__onclick__["a" /* default */])();
 Object(__WEBPACK_IMPORTED_MODULE_3__onselect__["a" /* default */])();
+Object(__WEBPACK_IMPORTED_MODULE_7__DateValidation__["a" /* default */])();
 
 /***/ }),
 /* 17 */
@@ -4398,11 +4428,11 @@ var DoorForm = function () {
 
                 var html = "";
                 for (var i = 0; i < travelsObject.length; i++) {
-                    console.log(response.data.travels[travelsObject[i]]);
-                    html += "<div class=\"col-16 col-m-16 col-l-7  m-t-8\">\n" + "                        <table class=\"is-text-center\">\n" + "                            <thead>\n" + "                            <tr>\n" + "                                <th></th>\n" + "                                <th>Horarios</th>\n" + "                            </tr>\n" + "                                <th>Puestos</th>\n" + "                            </thead>\n" + "                            <tbody>\n" + "                            <tr>\n" + "                                <td>\n" + "                                    <input id='politicas" + i + "' type=\"radio\" name=\"hour\" value=\"\">\n" + "                                    <label for='politicas" + i + "'></label>\n" + "                                </td>\n" + "                                <td>" + response.data.travels[travelsObject[i]][2] + "</td>\n" + "                                <td>" + response.data.travels[travelsObject[i]][3] + "</td>\n" + "                            </tr>\n" + "                            </tbody>\n" + "                        </table>\n" + "                    </div>";
+                    html += "<div class=\"col-16 col-m-16 col-l-7  m-t-8\">" + "                        <table class=\"is-text-center\">" + "                            <thead>" + "                            <tr>" + "                                <th></th>" + "                                <th>Horarios</th>" + "                                <th>Puestos</th>" + "                            </tr>" + "                            </thead>" + "                            <tbody>" + "                            <tr>" + "                                <td>" + "                                    <input id='politicas" + i + "' type=\"radio\" name=\"hour\" value=\"\">" + "                                    <label for='politicas" + i + "'></label>" + "                                </td>\n" + "                                <td>" + response.data.travels[travelsObject[i]][2] + "</td>" + "                                <td>" + response.data.travels[travelsObject[i]][3] + "</td>" + "                            </tr>" + "                            </tbody>" + "                        </table>" + "                    </div>";
                 }
                 tables.innerHTML = html;
             } else {
+                document.querySelector('#UserData').classList.add('is-hidden');
                 __WEBPACK_IMPORTED_MODULE_2_sweetalert___default()("0 viajes disponibles", "Busca con otra fecha ", "warning");
             }
         }
@@ -4424,6 +4454,41 @@ var DoorForm = function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert__);
+
+
+var initDate = document.querySelector('#init');
+var endDate = document.querySelector('#end');
+
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+
+    if (endDate) {
+        initDate.addEventListener('change', validate);
+        endDate.addEventListener('change', validate);
+    }
+});
+
+function validate() {
+    var init = new Date(initDate.value.replace('-', ",")),
+        end = new Date(endDate.value.replace('-', ","));
+
+    if (init > end || !initDate.value) {
+        endDate.value = '';
+        __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("¡upss!", 'La fecha final debe ser igual o mayor a la fecha final', 'error');
+    }
+    console.log(initDate.value);
+}
 
 /***/ })
 /******/ ]);
