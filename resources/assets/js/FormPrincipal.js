@@ -11,7 +11,7 @@ const site = document.getElementById('body').dataset.site,
     inputAuto = document.querySelector('#destiny'),
     loadWrap = document.getElementById('loadWrap'),
     submitPrincipal = document.querySelector('#submitPrincipal'),
-    citiesData = JSON.parse(inputAuto.dataset.cities),
+
     scrollCoords = {
         y: window.pageYOffset
     };
@@ -82,13 +82,15 @@ export default class Principal {
                 'Villavicencio': 1,
                 'Medellín': '2',
                 'Calí': 3,
-            };
+            },
+            citiesData = JSON.parse(inputAuto.dataset.cities);
         let cityValue = 'BOGOTA';
         city.forEach(function (el) {
             el.addEventListener('change', function () {
                 inputAuto.value = "";
                 inputAuto.disabled = false
                 cityValue = this.value;
+
                 new autoComplete({
                     selector: '#destiny', minChars: 2,
                     source: function (term, suggest) {
