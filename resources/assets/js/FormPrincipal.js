@@ -124,11 +124,14 @@ export default class Principal {
     validationForm() {
         let returnValidation = true
         const quotationForm = document.getElementById('formPrincipal');
+        const intDate = document.getElementById('init').value;
+        const endDate = document.getElementById('end').value;
+        const errorDate = document.getElementById('errorDate');
 
         const destiny = document.getElementById('destiny').value;
         const errorDestiny = document.getElementById('errorDestiny');
 
-        if (destiny == "" || destiny == null) {
+        if (destiny === "" || destiny == null) {
             errorDestiny.classList.remove("hidden");
             document.getElementById('destiny').classList.add("errorInput");
             returnValidation = false;
@@ -136,6 +139,18 @@ export default class Principal {
             errorDestiny.classList.add("hidden");
             document.getElementById('destiny').classList.remove("errorInput");
         }
+
+        if (intDate === "" || intDate == null) {
+            errorDate.classList.remove("hidden");
+            document.getElementById('init').classList.add("errorInput");
+            returnValidation = false;
+        } else {
+            errorDate.classList.add("hidden");
+            document.getElementById('init').classList.remove("errorInput");
+        }
+
+
+
 
         const radiotravel = quotationForm.travel;
         const errorTravel = document.getElementById('errorTravel');

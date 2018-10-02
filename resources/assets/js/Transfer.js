@@ -100,8 +100,11 @@ export default class Transfer {
     }
 
     static responseCalculate(response) {
+       const price =  document.getElementById('infoBox');
         loadWrap.classList.remove('show');
-        document.getElementById('infoBox').innerText = response.data.price;
+
+        price.classList.remove('hidden');
+        price.innerText = response.data.price;
     }
 
 }

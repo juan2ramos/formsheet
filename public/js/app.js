@@ -968,17 +968,29 @@ var Principal = function () {
         value: function validationForm() {
             var returnValidation = true;
             var quotationForm = document.getElementById('formPrincipal');
+            var intDate = document.getElementById('init').value;
+            var endDate = document.getElementById('end').value;
+            var errorDate = document.getElementById('errorDate');
 
             var destiny = document.getElementById('destiny').value;
             var errorDestiny = document.getElementById('errorDestiny');
 
-            if (destiny == "" || destiny == null) {
+            if (destiny === "" || destiny == null) {
                 errorDestiny.classList.remove("hidden");
                 document.getElementById('destiny').classList.add("errorInput");
                 returnValidation = false;
             } else {
                 errorDestiny.classList.add("hidden");
                 document.getElementById('destiny').classList.remove("errorInput");
+            }
+
+            if (intDate === "" || intDate == null) {
+                errorDate.classList.remove("hidden");
+                document.getElementById('init').classList.add("errorInput");
+                returnValidation = false;
+            } else {
+                errorDate.classList.add("hidden");
+                document.getElementById('init').classList.remove("errorInput");
             }
 
             var radiotravel = quotationForm.travel;
@@ -4317,8 +4329,11 @@ var Transfer = function () {
     }, {
         key: "responseCalculate",
         value: function responseCalculate(response) {
+            var price = document.getElementById('infoBox');
             loadWrap.classList.remove('show');
-            document.getElementById('infoBox').innerText = response.data.price;
+
+            price.classList.remove('hidden');
+            price.innerText = response.data.price;
         }
     }]);
 
@@ -4429,7 +4444,7 @@ var DoorForm = function () {
 
                 var html = "";
                 for (var i = 0; i < travelsObject.length; i++) {
-                    html += "<div class=\"col-16 col-m-16 col-l-7  m-t-8\">" + "                        <table class=\"is-text-center\">" + "                            <thead>" + "                            <tr>" + "                                <th></th>" + "                                <th>Horarios</th>" + "                                <th>Puestos</th>" + "                            </tr>" + "                            </thead>" + "                            <tbody>" + "                            <tr>" + "                                <td>" + "                                    <input id='politicas" + i + "' type=\"radio\" name=\"hour\" value=\"\">" + "                                    <label for='politicas" + i + "'></label>" + "                                </td>\n" + "                                <td>" + response.data.travels[travelsObject[i]][2] + "</td>" + "                                <td>" + response.data.travels[travelsObject[i]][3] + "</td>" + "                            </tr>" + "                            </tbody>" + "                        </table>" + "                    </div>";
+                    html += "<div class=\"col-16 col-m-16  m-t-8\">" + "                        <table class=\"is-text-center\">" + "                            <thead>" + "                            <tr>" + "                                <th></th>" + "                                <th>Horarios</th>" + "                                <th>Puestos</th>" + "                            </tr>" + "                            </thead>" + "                            <tbody>" + "                            <tr>" + "                                <td>" + "                                    <input id='politicas" + i + "' type=\"radio\" name=\"hour\" value=\"\">" + "                                    <label for='politicas" + i + "'></label>" + "                                </td>\n" + "                                <td>" + response.data.travels[travelsObject[i]][2] + "</td>" + "                                <td>" + response.data.travels[travelsObject[i]][3] + "</td>" + "                            </tr>" + "                            </tbody>" + "                        </table>" + "                    </div>";
                 }
                 tables.innerHTML = html;
             } else {

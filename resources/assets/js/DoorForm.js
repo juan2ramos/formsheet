@@ -73,7 +73,7 @@ export default class DoorForm {
 
             let html = "";
             for (let i = 0; i < travelsObject.length; i++) {
-                html += "<div class=\"col-16 col-m-16 col-l-7  m-t-8\">" +
+                html += "<div class=\"col-16 col-m-16  m-t-8\">" +
                     "                        <table class=\"is-text-center\">" +
                     "                            <thead>" +
                     "                            <tr>" +

@@ -94,8 +94,11 @@
                 <div class="col-16 numberItem">
                     <p><span>4</span></p>
                 </div>
+                <div class="col-16 row justify-center">
+                    <span id="errorDate" class="error hidden"> *Complete este campo </span></div>
                 <div class="col-6">
                     <label for="inicio">Fecha de inicio del viaje</label>
+
                     <input type="date" id="init" class="inputDate" name="init" value="{{old('init')}}"
                            placeholder="Inicio">
                 </div>
@@ -111,15 +114,14 @@
                 </div>
                 <div class="col-6">
                     <select id="car" name="car" data-url="{{env('APP_URL')}}">
-                        <option value="">Selecciona el tipo de vehículo</option>
-                        <option value="10" data-name="minivan">Camioneta/Minivan</option>
-                        <option value="11" data-name="minibus11">Microbus 11</option>
-                        <option value="12" data-name="microbus15">Microbus 15</option>
-                        <option value="13" selected data-name="microbus18">Microbus 18</option>
-                        <option value="14" data-name="buseta25">Buseta 25</option>
-                        <option value="15" data-name="buseton30">Buseton 30</option>
-                        <option value="16" data-name="buseton30">Buseton</option>
-                        <option value="17" data-name="bus">Bus</option>
+                        <option value="10" data-name="minivan">6 Pasajeros</option>
+                        <option value="11" data-name="minibus11">11 Pasajeros</option>
+                        <option value="12" data-name="microbus15">15 Pasajeros</option>
+                        <option value="13" selected data-name="microbus18">19 Pasajeros</option>
+                        <option value="14" data-name="buseta25">23 Pasajeros</option>
+                        <option value="15" data-name="buseton30">30 Pasajeros	</option>
+                        <option value="16" data-name="buseton30">40 Pasajeros</option>
+                        <option value="17" data-name="bus">42 Pasajeros</option>
                     </select>
                 </div>
                 <div class="col-10 typeCar">
