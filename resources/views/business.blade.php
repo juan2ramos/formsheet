@@ -177,10 +177,6 @@
                           <label for="worries6">Reducción de costos</label>
                         </p>
                         <p>
-                          <input type="checkbox" id="worries7" name="worries">
-                          <label for="worries7">Confort de los usuarios</label>
-                        </p>
-                        <p>
                           <input type="checkbox" id="worries8" name="worries">
                           <label for="worries8">Contar con vehículo último modelo</label>
                         </p>
