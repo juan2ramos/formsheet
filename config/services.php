@@ -35,4 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'slack' => [
+        'webhook' =>  env('SLACK_WEBHOOK', 'https://hooks.slack.com/services/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'),
+    ],
+
 ];

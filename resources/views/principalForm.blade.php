@@ -24,7 +24,7 @@
                     <p><span>1</span> Selecciona tu ciudad de origen </p>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
-                    <input id="cityBogo" class="rectangle" type="radio" name="origin" value="BOGOTA">
+                    <input id="cityBogo" class="rectangle" type="radio" name="origen" value="BOGOTA">
                     <label for="cityBogo">Bogotá</label>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
@@ -114,9 +114,10 @@
                 </div>
                 <div class="col-6">
                     <select id="car" name="car" data-url="{{env('APP_URL')}}">
-                        <option value="10" data-name="minivan">4 Pasajeros</option>
-                        <option value="11" data-name="minibus11">4 Pasajeros pickup</option>
+                        <option value="10" data-name="001">4 Pasajeros</option>
+                        <option value="11" data-name="002">4 Pasajeros pickup</option>
                         <option value="12" data-name="minivan">6 Pasajeros</option>
+                        <option value="13" data-name="minibus11">11 Pasajeros</option>
                         <option value="14" data-name="microbus15">15 Pasajeros</option>
                         <option value="15" selected data-name="microbus18">19 Pasajeros</option>
                         <option value="16" data-name="buseta25">23 Pasajeros</option>

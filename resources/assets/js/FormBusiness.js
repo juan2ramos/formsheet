@@ -14,7 +14,7 @@ const submitQuotation = document.getElementById('submitQuotation'),
 export default class Business {
     constructor(business) {
         this.business = business;
-        const self = this
+        const self = this;
         quotationForm.addEventListener('submit', this.getInfoFormBusiness.bind(this));
         submitQuotation.addEventListener('click', function (ev) {
             ev.preventDefault();
@@ -49,9 +49,9 @@ export default class Business {
             errorServiceMeeting.classList.add("hidden");
         }
 
-        const checkboxWorries = quotationForm.worries;
+        const checkboxWorries = quotationForm.querySelectorAll('[name^=worries]');
         const errorWorries = document.getElementById('errorWorries');
-
+        console.log(checkboxWorries)
         if (!(checkboxWorries[0].checked || checkboxWorries[1].checked || checkboxWorries[2].checked || checkboxWorries[3].checked || checkboxWorries[4].checked || checkboxWorries[5].checked || checkboxWorries[6].checked || checkboxWorries[7].checked)) {
             errorWorries.classList.remove("hidden");
             returnValidation = false;

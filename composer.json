@@ -12,6 +12,7 @@
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
         "nesbot/carbon": "1.25.0",
+        "pusher/pusher-php-server": "^3.2",
         "revolution/laravel-google-sheets": "^3.2",
         "spatie/laravel-collection-macros": "^4.0"
     },

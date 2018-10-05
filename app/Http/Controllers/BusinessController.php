@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\BusinessRoute;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class BusinessController extends Controller
 {
@@ -25,8 +28,14 @@ class BusinessController extends Controller
         return $row[$dataPost['car']];
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function quotationMail(Request $request)
     {
+        $user = new User(['name' => 'Juan ', 'email' => 'juan2ramos@gmail.com']);
+        Notification::send($user, new BusinessRoute($request->all()));
         return $request->all();
     }
 }

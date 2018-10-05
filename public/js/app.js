@@ -4075,9 +4075,9 @@ var Business = function () {
                 errorServiceMeeting.classList.add("hidden");
             }
 
-            var checkboxWorries = quotationForm.worries;
+            var checkboxWorries = quotationForm.querySelectorAll('[name^=worries]');
             var errorWorries = document.getElementById('errorWorries');
-
+            console.log(checkboxWorries);
             if (!(checkboxWorries[0].checked || checkboxWorries[1].checked || checkboxWorries[2].checked || checkboxWorries[3].checked || checkboxWorries[4].checked || checkboxWorries[5].checked || checkboxWorries[6].checked || checkboxWorries[7].checked)) {
                 errorWorries.classList.remove("hidden");
                 returnValidation = false;

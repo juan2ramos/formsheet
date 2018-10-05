@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-6">
                     <select id="car" name="car" data-url="{{env('APP_URL')}}">
-                        <option value="">Selecciona el tipo de vehículo</option>
+
                         <option value="1" data-name="minivan">6 Pasajeros</option>
                         <option value="2" data-name="minibus11">11 Pasajeros</option>
                         <option value="3" data-name="microbus15">15 Pasajeros</option>
@@ -121,10 +121,10 @@
                     <div class="col-6">
                         <label for="fin">Duración del contrato</label>
                         <select class="" name="contractTime" id="duracionContrato">
-                            <option value="">1 a 3 meses</option>
-                            <option value="">6 meses</option>
-                            <option value="">1 año</option>
-                            <option value="">Más de 1 año</option>
+                            <option value="1 a 3 meses">1 a 3 meses</option>
+                            <option value="6 meses">6 meses</option>
+                            <option value="1 año">1 año</option>
+                            <option value="Más de 1 año">Más de 1 año</option>
                         </select>
                     </div>
                 </div>
@@ -153,35 +153,35 @@
                         <p class="is-text-center">¿Cuales son sus principales preocupaciones en transporte? Seleccione tantas opciones como desee</p>
                         <span id="errorWorries" class="error hidden"> *Por Favor Seleccione una opcion </span> <br>
                         <p>
-                          <input type="checkbox" id="worries1" name="worries">
-                          <label for="worries1">Planificación y optimización de rutas</label>
+                          <input type="checkbox" id="worries1" name="worries[Planificación y optimizón de rutas]">
+                          <label for="worries1">Planificación y optimizón de rutas</label>
                         </p>
                         <p>
-                          <input type="checkbox" id="worries2" name="worries">
+                          <input type="checkbox" id="worries2" name="worries[Confort de los usuarios]">
                           <label for="worries2">Confort de los usuarios</label>
                         </p>
                         <p>
-                          <input type="checkbox" id="worries3" name="worries">
+                          <input type="checkbox" id="worries3" name="worries[Puntualidad y cumplimiento]">
                           <label for="worries3">Puntualidad y cumplimiento</label>
                         </p>
                         <p>
-                          <input type="checkbox" id="worries4" name="worries">
+                          <input type="checkbox" id="worries4" name="worries[Utilización de herramientas tecnologicas]">
                           <label for="worries4">Utilización de herramientas tecnologicas</label>
                         </p>
                         <p>
-                          <input type="checkbox" id="worries5" name="worries">
+                          <input type="checkbox" id="worries5" name="worries[Aumentar utilización del servicio de parte de los empleados]">
                           <label for="worries5">Aumentar utilización del servicio de parte de los empleados</label>
                         </p>
                         <p>
-                          <input type="checkbox" id="worries6" name="worries">
+                          <input type="checkbox" id="worries6" name="worries[Reducción de costos]">
                           <label for="worries6">Reducción de costos</label>
                         </p>
                         <p>
-                          <input type="checkbox" id="worries8" name="worries">
+                          <input type="checkbox" id="worries8" name="worries[]">
                           <label for="worries8">Contar con vehículo último modelo</label>
                         </p>
                         <p>
-                          <input type="checkbox" id="worries9" name="worries">
+                              <input type="checkbox" id="worries9" name="worries[]">
                           <label for="worries9">Otro</label>
                         </p>
 
