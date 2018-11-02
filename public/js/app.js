@@ -4429,7 +4429,7 @@ var DoorForm = function () {
 
             loadWrap.classList.remove('show');
             var travelsObject = Object.keys(response.data.travels);
-
+            console.log(response.data.travels);
             if (travelsObject.length) {
                 document.querySelector('#UserData').classList.remove('is-hidden');
                 __WEBPACK_IMPORTED_MODULE_4_animejs___default()({

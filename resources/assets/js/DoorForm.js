@@ -60,7 +60,7 @@ export default class DoorForm {
 
         loadWrap.classList.remove('show');
         const travelsObject = Object.keys(response.data.travels);
-
+      console.log(response.data.travels)
         if (travelsObject.length) {
             document.querySelector('#UserData').classList.remove('is-hidden');
             anime({

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\BusinessRoute;
+use App\Notifications\Principal;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class PrincipalController
 {
@@ -17,7 +21,8 @@ class PrincipalController
 
     function principalMail(Request $request)
     {
-
+        $user = new User(['name' => 'Juan ', 'email' => 'juan2ramos@gmail.com']);
+        Notification::send($user, new Principal($request->all()));
         return $request->all();
     }
 
@@ -40,6 +45,7 @@ class PrincipalController
         $travelValue = $this->getCalculate($input, $travel);
 
         //return ['input' => $input];
+
         return ['travelValue' => $travelValue, 'travel' => $travel];
     }
 

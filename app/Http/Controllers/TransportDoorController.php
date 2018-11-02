@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\Door;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class TransportDoorController extends Controller
 {
@@ -27,7 +30,6 @@ class TransportDoorController extends Controller
     private function getTravels($data)
     {
         $date = new Carbon($data['init']);
-
         return $this->sheet($this->sheet)
             ->where('0', $data['origin'])
             ->where('1', $date->format('d/m/Y'))
@@ -38,6 +40,9 @@ class TransportDoorController extends Controller
             })->all();
     }
     public function send(Request $request){
+
+        $user = new User(['name' => 'Juan ', 'email' => 'juan2ramos@gmail.com']);
+        Notification::send($user, new Door($request->all()));
         return $request;
     }
 
