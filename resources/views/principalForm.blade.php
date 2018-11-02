@@ -24,7 +24,7 @@
                     <p><span>1</span> Selecciona tu ciudad de origen </p>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
-                    <input id="cityBogo" class="rectangle" type="radio" name="origen" value="BOGOTA">
+                    <input id="cityBogo" class="rectangle" type="radio" name="origin" value="BOGOTA">
                     <label for="cityBogo">Bogotá</label>
                 </div>
                 <div class="col-16 col-m-4 col-l-4 m-t-8">
