@@ -41,7 +41,7 @@ class TransportDoorController extends Controller
     }
     public function send(Request $request){
 
-        $user = new User(['name' => 'Juan ', 'email' => 'juan2ramos@gmail.com']);
+        $user = new User(['name' => 'Estarter.co ', 'email' => 'cotizaciones@estarter.co']);
         Notification::send($user, new Door($request->all()));
         return $request;
     }

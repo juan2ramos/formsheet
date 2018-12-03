@@ -21,7 +21,7 @@ class PrincipalController
 
     function principalMail(Request $request)
     {
-        $user = new User(['name' => 'Juan ', 'email' => 'juan2ramos@gmail.com']);
+        $user = new User(['name' => 'Estarter.co ', 'email' => 'cotizaciones@estarter.co']);
         Notification::send($user, new Principal($request->all()));
         return $request->all();
     }
